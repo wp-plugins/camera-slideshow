@@ -4,7 +4,7 @@ Donate link: http://www.pixedelic.com/plugins/camera/donate.php
 Tags: slideshow, jQuery, adaptive, mobile, drag and drop, admin panel, shortcode
 Requires at least: 3.0.0
 Tested up to: 3.3.1
-Stable tag: 1.0.1
+Stable tag: 1.0.05
 
 A jQuery slideshow with an adaptive layout, easy to use with an extended admin panel
 
