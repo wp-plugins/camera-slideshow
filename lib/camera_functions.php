@@ -603,7 +603,7 @@ add_action('wp_head', 'front_camera_plugindir');
 
 /*=========================================================================================*/
 
-define('CAMERA_PATH',ABSPATH.'/wp-content/plugins/camera/');
+define('CAMERA_PATH',ABSPATH.'wp-content/plugins/camera/');
  
 add_action('admin_init','camera_metabox');
 
