@@ -44,7 +44,7 @@ if (function_exists('camera_meta_slideshow')) {
 == Changelog ==
 
 = 1.0.1 =
-* 2012.02.23 - Try to fix an ABSPATH problem
+* 2012.02.23 - Tried to fix an ABSPATH problem
 
 = 1.0.05 =
 * 2012.02.22 - First adjustments, sorry
