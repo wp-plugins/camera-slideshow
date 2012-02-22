@@ -14,10 +14,6 @@ A jQuery slideshow with an adaptive layout, easy to use with an extended admin p
 
 == Installation ==
 
-This section describes how to install the plugin and get it working.
-
-e.g.
-
 1. Upload `camera` to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. You can include Camera slideshow into your projects by using the TinyMCE custom button, by using the shortcode [camera slideshow='my-first-slideshow'] or by enabling the meta-box. In this case add these lines to your function.php file:
