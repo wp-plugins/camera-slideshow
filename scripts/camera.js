@@ -2257,7 +2257,7 @@
 ;(function($){$.fn.cameraResume = function() {
 	var wrap = $(this);
 	var elem = $('.camera_src',wrap);
-	if(autoAdv!=false){
+	if(typeof autoAdv === 'undefined' || autoAdv!==true){
 		elem.removeClass('paused');
 	}
 }
