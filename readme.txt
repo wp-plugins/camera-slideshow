@@ -4,7 +4,7 @@ Donate link: http://www.pixedelic.com/plugins/camera/donate.php
 Tags: slideshow, jQuery, adaptive, mobile, drag and drop, admin panel, shortcode
 Requires at least: 3.0.0
 Tested up to: 3.3.1
-Stable tag: 1.0.05
+Stable tag: 1.0.2
 
 A jQuery slideshow with an adaptive layout, easy to use with an extended admin panel
 
@@ -42,6 +42,9 @@ if (function_exists('camera_meta_slideshow')) {
 2. Camera admin panel (2)
 
 == Changelog ==
+
+= 1.0.2 =
+* 2012.02.24 - Fixed a bug with the TinyMCS button
 
 = 1.0.1 =
 * 2012.02.23 - Tried to fix an ABSPATH problem
