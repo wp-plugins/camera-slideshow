@@ -43,6 +43,12 @@ if (function_exists('camera_meta_slideshow')) {
 
 == Changelog ==
 
+= 1.0.4 =
+* 2012.03.08 - Fixed a problem with the captions and multiple slideshows
+
+= 1.0.3 =
+* 2012.02.27 - Fixed minor bugs
+
 = 1.0.2 =
 * 2012.02.24 - Fixed a bug with the TinyMCS button
 
