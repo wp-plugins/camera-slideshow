@@ -15,6 +15,7 @@ jQuery(function(){
 				mobileEasing: t.attr('data-mobileeasing'),
 				fx: t.attr('data-fx'),
 				mobileFx: t.attr('data-mobilefx'),
+				gridDifference: 0,
 				height: t.attr('data-height')+t.attr('data-heightsign'),
 				imagePath: plugindir+'/css/images/',
 				hover: (t.attr('data-hover') == 'true') ? true : false,
