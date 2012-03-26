@@ -3,7 +3,7 @@
 Plugin Name: Camera slideshow
 Plugin URI: http://www.pixedelic.com/plugins/camera/wp.php
 Description: An adpative jQuery slideshow, mobile ready
-Version: 1.0.4
+Version: 1.0.6
 Author: Manuel Masia | Pixedelic.com
 Author URI: http://www.pixedelic.com
 License: GPL2
