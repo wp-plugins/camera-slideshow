@@ -1,4 +1,4 @@
-// Camera slideshow v1.0.6 - a jQuery slideshow with many effects, transitions, easy to customize, using canvas and mobile ready, based on jQuery 1.4+
+// Camera slideshow v1.0.8 - a jQuery slideshow with many effects, transitions, easy to customize, using canvas and mobile ready, based on jQuery 1.4+
 // Copyright (c) 2012 by Manuel Masia - www.pixedelic.com
 // Licensed under the MIT license: http://www.opensource.org/licenses/mit-license.php
 ;(function($){$.fn.camera = function(opts, callback) {
@@ -277,8 +277,8 @@
 		$('.cameraContents',content).append('<div class="cameraContent" />');
 		if(allLinks[loopMove]!=''){
 			//only for Wordpress plugin
-			var dataBox;
-			if($('> div ',elem).eq(loopMove).attr('data-box').length) {
+			var dataBox = $('> div ',elem).eq(loopMove).attr('data-box');
+			if(typeof dataBox !== 'undefined' && dataBox !== false && dataBox != '') {
 				dataBox = 'data-box="'+$('> div ',elem).eq(loopMove).attr('data-box')+'"';
 			} else {
 				dataBox = '';
@@ -1094,16 +1094,16 @@
 			if (!$(imgLoaded).get(0).complete || wT == '0' || hT == '0' || typeof wT === 'undefined' || wT === false || typeof hT === 'undefined' || hT === false) {
 				$('.camera_loader',wrap).delay(500).fadeIn(400);
 				imgLoaded.onload = function() {
-					var wT = $(imgLoaded).width();
-					var hT = $(imgLoaded).height();
+					wT = imgLoaded.naturalWidth;
+					hT = imgLoaded.naturalHeight;
 					$(imgLoaded).attr('width',wT).attr('height',hT).attr('data-alignment',allAlign[slideI]).attr('data-portrait',allPor[slideI]);
 					target.find('.cameraSlide_'+slideI).hide().css('visibility','visible');
 					resizeImage();
 					nextSlide(slideI+1);
 				};
 			} else {
-				var wT = $(imgLoaded).width();
-				var hT = $(imgLoaded).height();
+				wT = imgLoaded.naturalWidth;
+				hT = imgLoaded.naturalHeight;
 				$(imgLoaded).attr('width',wT).attr('height',hT).attr('data-alignment',allAlign[slideI]).attr('data-portrait',allPor[slideI]);
 				target.find('.cameraSlide_'+slideI).hide().css('visibility','visible');
 				resizeImage();

@@ -43,6 +43,9 @@ if (function_exists('camera_meta_slideshow')) {
 
 == Changelog ==
 
+= 1.0.8 =
+* 2012.04.05 - Fixed an issue with IE
+
 = 1.0.4 =
 * 2012.03.08 - Fixed a problem with the captions and multiple slideshows
 
