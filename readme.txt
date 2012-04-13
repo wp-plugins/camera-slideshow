@@ -43,6 +43,9 @@ if (function_exists('camera_meta_slideshow')) {
 
 == Changelog ==
 
+= 1.0.9 =
+* 2012.04.13 - Fixed an issue with IE and Firefox, updated TimThumb
+
 = 1.0.8 =
 * 2012.04.05 - Fixed an issue with IE
 
