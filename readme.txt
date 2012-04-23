@@ -43,6 +43,9 @@ if (function_exists('camera_meta_slideshow')) {
 
 == Changelog ==
 
+= 1.1.1 =
+* 2012.04.23 - Fixed an issue with IE, and added some features to the admin panel
+
 = 1.0.9 =
 * 2012.04.13 - Fixed an issue with IE and Firefox, updated TimThumb
 
