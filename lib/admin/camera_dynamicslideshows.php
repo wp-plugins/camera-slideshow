@@ -44,11 +44,12 @@ $cameraarray_added_slideshows = camera_get_option( 'cameraarray_'.$_GET['slidesh
                     <input type="text" name="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_n][link]" value="<?php if(isset($cameraarray_added_slideshows_array['camera_slide_no_n']['link'])) { echo stripslashes(htmlentities($cameraarray_added_slideshows_array['camera_slide_no_n']['link'], ENT_QUOTES)); } ?>">
                     <br><br>
                     <label for="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_n][target]">Open the link:</label>
-                    <select name="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_n][target]">
+                    <select name="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_n][target]" class="clone_select">
                         <option value="_self"<?php if (!isset($cameraarray_added_slideshows_array['camera_slide_no_n']['target']) || $cameraarray_added_slideshows_array['camera_slide_no_n']['target']=="_self") { echo ' selected="selected"'; } ?>>in the same window</option>
                         <option value="_blank"<?php if (isset($cameraarray_added_slideshows_array['camera_slide_no_n']['target']) && $cameraarray_added_slideshows_array['camera_slide_no_n']['target']=="_blank") { echo ' selected="selected"'; } ?>>in a new window</option>
                         <option value="box"<?php if (isset($cameraarray_added_slideshows_array['camera_slide_no_n']['target']) && $cameraarray_added_slideshows_array['camera_slide_no_n']['target']=="box") { echo ' selected="selected"'; } ?>>in a box</option>
                     </select>
+                <div class="clear"></div>
                 </div><!-- .toggle_div -->
                 <div class="clear"></div>
                 
@@ -57,18 +58,20 @@ $cameraarray_added_slideshows = camera_get_option( 'cameraarray_'.$_GET['slidesh
                     <label for="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_n][embed]">Embedded video:</label>
                     <input type="text" name="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_n][embed]" value="<?php if(isset($cameraarray_added_slideshows_array['camera_slide_no_n']['embed'])) { echo stripslashes(htmlentities($cameraarray_added_slideshows_array['camera_slide_no_n']['embed'], ENT_QUOTES)); } ?>">
                     <small>Paste here above an iFrame, set the width and the height to 100% to make the video fit the slideshow</small>
+                    <div class="clear"></div>
                     <label for="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_n][embeddisplay]">Display embedded video:</label>
-                    <select name="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_n][embeddisplay]">
+                    <select name="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_n][embeddisplay]" class="clone_select">
                         <option value="show"<?php if (!isset($cameraarray_added_slideshows_array['camera_slide_no_n']['embeddisplay']) || $cameraarray_added_slideshows_array['camera_slide_no_n']['embeddisplay']=="show") { echo ' selected="selected"'; } ?>>After the transition effect</option>
                         <option value="hide"<?php if (isset($cameraarray_added_slideshows_array['camera_slide_no_n']['embeddisplay']) && $cameraarray_added_slideshows_array['camera_slide_no_n']['embeddisplay']=="hide") { echo ' selected="selected"'; } ?>>After clicking the slide</option>
                     </select>
+                    <div class="clear"></div>
                     <div class="hr"></div>
                     <label for="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_n][caption]">Caption:</label>
                     <textarea name="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_n][caption]"><?php if(isset($cameraarray_added_slideshows_array['camera_slide_no_n']['html'])) { echo stripslashes(htmlentities($cameraarray_added_slideshows_array['camera_slide_no_n']['caption'], ENT_QUOTES)); } ?></textarea>
                     <small>You can also use HTML tags</small>
-                    <br><br>  
+                    <div class="clear"></div>
                     <label for="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_n][captioneffect]">Caption effect:</label>
-                    <select name="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_n][captioneffect]">
+                    <select name="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_n][captioneffect]" class="clone_select">
                         <option value="showIt"<?php if (!isset($cameraarray_added_slideshows_array['camera_slide_no_n']['captioneffect']) || $cameraarray_added_slideshows_array['camera_slide_no_n']['captioneffect']=="showIt") { echo ' selected="selected"'; } ?>>None</option>
                         <option value="fadeIn"<?php if (isset($cameraarray_added_slideshows_array['camera_slide_no_n']['captioneffect']) && $cameraarray_added_slideshows_array['camera_slide_no_n']['captioneffect']=="fadeIn") { echo ' selected="selected"'; } ?>>Fade in</option>
                         <option value="moveFromLeft"<?php if (isset($cameraarray_added_slideshows_array['camera_slide_no_n']['captioneffect']) && $cameraarray_added_slideshows_array['camera_slide_no_n']['captioneffect']=="moveFromLeft") { echo ' selected="selected"'; } ?>>Move from left</option>
@@ -80,16 +83,17 @@ $cameraarray_added_slideshows = camera_get_option( 'cameraarray_'.$_GET['slidesh
                         <option value="fadeFromTop"<?php if (isset($cameraarray_added_slideshows_array['camera_slide_no_n']['captioneffect']) && $cameraarray_added_slideshows_array['camera_slide_no_n']['captioneffect']=="fadeFromTop") { echo ' selected="selected"'; } ?>>Fade from top</option>
                         <option value="fadeFromBottom"<?php if (isset($cameraarray_added_slideshows_array['camera_slide_no_n']['captioneffect']) && $cameraarray_added_slideshows_array['camera_slide_no_n']['captioneffect']=="fadeFromBottom") { echo ' selected="selected"'; } ?>>Fade from bottom</option>
                     </select>
+                    <div class="clear"></div>
                     <div class="hr"></div>
                     <label for="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_n][html]">Html:</label>
                     <textarea name="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_n][html]"><?php if(isset($cameraarray_added_slideshows_array['camera_slide_no_n']['html'])) { echo stripslashes(htmlentities($cameraarray_added_slideshows_array['camera_slide_no_n']['html'], ENT_QUOTES)); } ?></textarea>
                     <br><br>  
                     <label for="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_n][htmleffect]">Html effect:</label>
-                    <select name="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_n][htmleffect]">
+                    <select name="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_n][htmleffect]" class="clone_select">
                         <option value="none"<?php if (!isset($cameraarray_added_slideshows_array['camera_slide_no_n']['htmleffect']) || $cameraarray_added_slideshows_array['camera_slide_no_n']['htmleffect']=="none") { echo ' selected="selected"'; } ?>>None</option>
                         <option value="fadeIn"<?php if (isset($cameraarray_added_slideshows_array['camera_slide_no_n']['htmleffect']) && $cameraarray_added_slideshows_array['camera_slide_no_n']['htmleffect']=="fadeIn") { echo ' selected="selected"'; } ?>>Fade in</option>
                     </select>
-                    <br><br>  
+                    <div class="clear"></div>
                     <label for="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_n][htmlinclude]">Include the HTML in the transition effect:</label>
                     <input type="hidden" value="0" name="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_n][htmlinclude]">
                     <input type="checkbox" value="true" name="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_n][htmlinclude]"<?php if (isset($cameraarray_added_slideshows_array['camera_slide_no_n']['htmlinclude']) && $cameraarray_added_slideshows_array['camera_slide_no_n']['htmlinclude']=="true") { ?> checked="checked"<?php } ?>>
@@ -104,7 +108,7 @@ $cameraarray_added_slideshows = camera_get_option( 'cameraarray_'.$_GET['slidesh
                     <input type="hidden" value="0" name="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_n][aligndefault]">
                     <input type="checkbox" value="true" name="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_n][aligndefault]"<?php if (isset($cameraarray_added_slideshows_array['camera_slide_no_n']['aligndefault']) && $cameraarray_added_slideshows_array['camera_slide_no_n']['aligndefault']=="true") { ?> checked="checked"<?php } ?>>
                     <small>Switch on the button above if you want to select an option here below, switch it off if you want to use the slideshow default settings</small> 
-                    <select name="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_n][alignment]" class="select_alignment">
+                    <select name="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_n][alignment]" class="select_alignment letmebe">
                         <option value="center"<?php if (!isset($cameraarray_added_slideshows_array['camera_slide_no_n']['alignment']) || $cameraarray_added_slideshows_array['camera_slide_no_n']['alignment']=="center") { echo ' selected="selected"'; } ?>>center</option>
                         <option value="topCenter"<?php if (isset($cameraarray_added_slideshows_array['camera_slide_no_n']['alignment']) && $cameraarray_added_slideshows_array['camera_slide_no_n']['alignment']=="topCenter") { echo ' selected="selected"'; } ?>>topCenter</option>
                         <option value="topRight"<?php if (isset($cameraarray_added_slideshows_array['camera_slide_no_n']['alignment']) && $cameraarray_added_slideshows_array['camera_slide_no_n']['alignment']=="topRight") { echo ' selected="selected"'; } ?>>topRight</option>
@@ -115,14 +119,14 @@ $cameraarray_added_slideshows = camera_get_option( 'cameraarray_'.$_GET['slidesh
                         <option value="bottomCenter"<?php if (isset($cameraarray_added_slideshows_array['camera_slide_no_n']['alignment']) && $cameraarray_added_slideshows_array['camera_slide_no_n']['alignment']=="bottomCenter") { echo ' selected="selected"'; } ?>>bottomCenter</option>
                         <option value="bottomRight"<?php if (isset($cameraarray_added_slideshows_array['camera_slide_no_n']['alignment']) && $cameraarray_added_slideshows_array['camera_slide_no_n']['alignment']=="bottomRight") { echo ' selected="selected"'; } ?>>bottomRight</option>
                     </select>
-                    <br><br>  
+                    <div class="clear"></div><br>
                     <label for="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_n][portrait]">Slide portrait:</label>
-                    <select name="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_n][portrait]">
+                    <select name="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_n][portrait]" class="clone_select">
                         <option value="default"<?php if (!isset($cameraarray_added_slideshows_array['camera_slide_no_n']['portrait']) || $cameraarray_added_slideshows_array['camera_slide_no_n']['portrait']=="center") { echo ' selected="selected"'; } ?>>default</option>
                         <option value="true"<?php if (isset($cameraarray_added_slideshows_array['camera_slide_no_n']['portrait']) && $cameraarray_added_slideshows_array['camera_slide_no_n']['portrait']=="yes") { echo ' selected="selected"'; } ?>>yes</option>
                         <option value="false"<?php if (isset($cameraarray_added_slideshows_array['camera_slide_no_n']['portrait']) && $cameraarray_added_slideshows_array['camera_slide_no_n']['portrait']=="no") { echo ' selected="selected"'; } ?>>no</option>
                     </select>
-                    <br><br>  
+                    <div class="clear"></div><br>
                     <label for="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_n][fx]">Slide effects:</label>
                     <select name="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_n][fx][]" multiple>
                         <option value="default"<?php if (!isset($cameraarray_added_slideshows_array['camera_slide_no_n']['fx']) || (is_array($cameraarray_added_slideshows_array['camera_slide_no_n']['fx']) && in_array("default",$cameraarray_added_slideshows_array['camera_slide_no_n']['fx']))) { echo ' selected="selected"'; } ?>>default</option>
@@ -156,9 +160,9 @@ $cameraarray_added_slideshows = camera_get_option( 'cameraarray_'.$_GET['slidesh
                         <option value="scrollBottom"<?php if (isset($cameraarray_added_slideshows_array['camera_slide_no_n']['fx']) && is_array($cameraarray_added_slideshows_array['camera_slide_no_n']['fx']) && in_array("scrollBottom",$cameraarray_added_slideshows_array['camera_slide_no_n']['fx'])) { echo ' selected="selected"'; } ?>>scrollBottom</option>
                         <option value="scrollHorz"<?php if (isset($cameraarray_added_slideshows_array['camera_slide_no_n']['fx']) && is_array($cameraarray_added_slideshows_array['camera_slide_no_n']['fx']) && in_array("scrollHorz",$cameraarray_added_slideshows_array['camera_slide_no_n']['fx'])) { echo ' selected="selected"'; } ?>>scrollHorz</option>
                     </select>
-                    <br><br>
+                    <div class="clear"></div><br>  
                     <label for="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_n][easing]">Slide easing:</label>
-                    <select name="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_n][easing]">
+                    <select name="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_n][easing]" class="clone_select">
                         <option value="default"<?php if (!isset($cameraarray_added_slideshows_array['camera_slide_no_n']['easing']) || $cameraarray_added_slideshows_array['camera_slide_no_n']['easing']=='default') { echo ' selected="selected"'; } ?>>default</option>
                         <option value="linear"<?php if (isset($cameraarray_added_slideshows_array['camera_slide_no_n']['easing']) && $cameraarray_added_slideshows_array['camera_slide_no_n']['easing']=='linear') { echo ' selected="selected"'; } ?>>linear</option>
                         <option value="swing"<?php if (isset($cameraarray_added_slideshows_array['camera_slide_no_n']['easing']) && $cameraarray_added_slideshows_array['camera_slide_no_n']['easing']=='swing') { echo ' selected="selected"'; } ?>>swing</option>
@@ -193,7 +197,7 @@ $cameraarray_added_slideshows = camera_get_option( 'cameraarray_'.$_GET['slidesh
                         <option value="easeOutBounce"<?php if (isset($cameraarray_added_slideshows_array['camera_slide_no_n']['easing']) && $cameraarray_added_slideshows_array['camera_slide_no_n']['easing']=='easeOutBounce') { echo ' selected="selected"'; } ?>>easeOutBounce</option>
                         <option value="easeInOutBounce"<?php if (isset($cameraarray_added_slideshows_array['camera_slide_no_n']['easing']) && $cameraarray_added_slideshows_array['camera_slide_no_n']['easing']=='easeInOutBounce') { echo ' selected="selected"'; } ?>>easeInOutBounce</option>
                     </select>
-                    <br><br>
+                    <div class="clear"></div><br>  
                     <div class="camera_ui_slider milliseconds">
                         <label for="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_n][time]">Time:
                             <small>Leave blank to use the default settings</small>
@@ -202,7 +206,7 @@ $cameraarray_added_slideshows = camera_get_option( 'cameraarray_'.$_GET['slidesh
                         <div class="clear"></div>
                         <div class="camera_slider_cursor"></div>
                     </div><!-- .camera_ui_slider -->
-                    <br>
+                    <div class="clear"></div><br>  
                     <div class="camera_ui_slider milliseconds">
                         <label for="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_n][transperiod]">Transition period:
                             <small>Leave blank to use the default settings</small>
@@ -252,7 +256,7 @@ $cameraarray_added_slideshows = camera_get_option( 'cameraarray_'.$_GET['slidesh
                     <div class="clear"></div><!-- .clear -->
                     
                     <label for="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[alignment]">Alignment:</label>
-                    <select name="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[alignment]" class="select_alignment">
+                    <select name="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[alignment]" class="select_alignment letmebe">
                         <option value="center"<?php if ($cameraarray_added_slideshows['alignment']=="center") { echo ' selected="selected"'; } ?>></option>
                         <option value="topLeft"<?php if ($cameraarray_added_slideshows['alignment']=="topLeft") { echo ' selected="selected"'; } ?>></option>
                         <option value="topCenter"<?php if ($cameraarray_added_slideshows['alignment']=="topCenter") { echo ' selected="selected"'; } ?>></option>
@@ -746,6 +750,7 @@ $cameraarray_added_slideshows = camera_get_option( 'cameraarray_'.$_GET['slidesh
                                             <option value="_blank"<?php if (isset($cameraarray_added_slideshows_array['camera_slide_no_'.$i]['target']) && $cameraarray_added_slideshows_array['camera_slide_no_'.$i]['target']=="_blank") { echo ' selected="selected"'; } ?>>in a new window</option>
                                             <option value="box"<?php if (isset($cameraarray_added_slideshows_array['camera_slide_no_'.$i]['target']) && $cameraarray_added_slideshows_array['camera_slide_no_'.$i]['target']=="box") { echo ' selected="selected"'; } ?>>in a box</option>
                                         </select>
+                                    <div class="clear"></div>
                                     </div><!-- .toggle_div -->
                                     <div class="clear"></div>
                                     
@@ -754,16 +759,18 @@ $cameraarray_added_slideshows = camera_get_option( 'cameraarray_'.$_GET['slidesh
                                         <label for="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_<?php echo $i; ?>][embed]">Embedded video:</label>
                                         <input type="text" name="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_<?php echo $i; ?>][embed]" value="<?php if(isset($cameraarray_added_slideshows_array['camera_slide_no_'.$i]['embed'])) { echo stripslashes(htmlentities($cameraarray_added_slideshows_array['camera_slide_no_'.$i]['embed'], ENT_QUOTES)); } ?>">
                                         <small>Paste here above an iFrame, set the width and the height to 100% to make the video fit the slideshow</small>
+                                        <div class="clear"></div>
                                         <label for="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_<?php echo $i; ?>][embeddisplay]">Display embedded video:</label>
                                         <select name="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_<?php echo $i; ?>][embeddisplay]">
                                             <option value="show"<?php if (!isset($cameraarray_added_slideshows_array['camera_slide_no_'.$i]['embeddisplay']) || $cameraarray_added_slideshows_array['camera_slide_no_'.$i]['embeddisplay']=="show") { echo ' selected="selected"'; } ?>>After the transition effect</option>
                                             <option value="hide"<?php if (isset($cameraarray_added_slideshows_array['camera_slide_no_'.$i]['embeddisplay']) && $cameraarray_added_slideshows_array['camera_slide_no_'.$i]['embeddisplay']=="hide") { echo ' selected="selected"'; } ?>>After clicking the slide</option>
                                         </select>
+                                        <div class="clear"></div>
                                         <div class="hr"></div>
                                         <label for="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_<?php echo $i; ?>][caption]">Caption:</label>
                                         <textarea name="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_<?php echo $i; ?>][caption]"><?php if(isset($cameraarray_added_slideshows_array['camera_slide_no_'.$i]['caption'])) { echo stripslashes(htmlentities($cameraarray_added_slideshows_array['camera_slide_no_'.$i]['caption'], ENT_QUOTES)); } ?></textarea>
                                         <small>You can also use HTML tags</small>
-                                        <br><br>  
+                                        <div class="clear"></div>
                                         <label for="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_<?php echo $i; ?>][captioneffect]">Caption effect:</label>
                                         <select name="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_<?php echo $i; ?>][captioneffect]">
                                             <option value="showIt"<?php if (!isset($cameraarray_added_slideshows_array['camera_slide_no_'.$i]['captioneffect']) || $cameraarray_added_slideshows_array['camera_slide_no_'.$i]['captioneffect']=="showIt") { echo ' selected="selected"'; } ?>>None</option>
@@ -777,6 +784,7 @@ $cameraarray_added_slideshows = camera_get_option( 'cameraarray_'.$_GET['slidesh
                                             <option value="fadeFromTop"<?php if (isset($cameraarray_added_slideshows_array['camera_slide_no_'.$i]['captioneffect']) && $cameraarray_added_slideshows_array['camera_slide_no_'.$i]['captioneffect']=="fadeFromTop") { echo ' selected="selected"'; } ?>>Fade from top</option>
                                             <option value="fadeFromBottom"<?php if (isset($cameraarray_added_slideshows_array['camera_slide_no_'.$i]['captioneffect']) && $cameraarray_added_slideshows_array['camera_slide_no_'.$i]['captioneffect']=="fadeFromBottom") { echo ' selected="selected"'; } ?>>Fade from bottom</option>
                                         </select>
+                                        <div class="clear"></div>
                                         <div class="hr"></div>
                                         <label for="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_<?php echo $i; ?>][html]">Html:</label>
                                         <textarea name="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_<?php echo $i; ?>][html]"><?php if(isset($cameraarray_added_slideshows_array['camera_slide_no_'.$i]['html'])) { echo stripslashes(htmlentities($cameraarray_added_slideshows_array['camera_slide_no_'.$i]['html'], ENT_QUOTES)); } ?></textarea>
@@ -786,7 +794,7 @@ $cameraarray_added_slideshows = camera_get_option( 'cameraarray_'.$_GET['slidesh
                                             <option value="none"<?php if (!isset($cameraarray_added_slideshows_array['camera_slide_no_'.$i]['htmleffect']) || $cameraarray_added_slideshows_array['camera_slide_no_'.$i]['htmleffect']=="none") { echo ' selected="selected"'; } ?>>None</option>
                                             <option value="fadeIn"<?php if (isset($cameraarray_added_slideshows_array['camera_slide_no_'.$i]['htmleffect']) && $cameraarray_added_slideshows_array['camera_slide_no_'.$i]['htmleffect']=="fadeIn") { echo ' selected="selected"'; } ?>>Fade in</option>
                                         </select>
-                                        <br><br>  
+                                        <div class="clear"></div>
                                         <label for="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_<?php echo $i; ?>][htmlinclude]">Include the HTML in the transition effect:</label>
                                         <input type="hidden" value="0" name="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_<?php echo $i; ?>][htmlinclude]">
                                         <input type="checkbox" value="true" name="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_<?php echo $i; ?>][htmlinclude]"<?php if (isset($cameraarray_added_slideshows_array['camera_slide_no_'.$i]['htmlinclude']) && $cameraarray_added_slideshows_array['camera_slide_no_'.$i]['htmlinclude']=="true") { ?> checked="checked"<?php } ?>>
@@ -802,7 +810,7 @@ $cameraarray_added_slideshows = camera_get_option( 'cameraarray_'.$_GET['slidesh
                                         <input type="hidden" value="0" name="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_<?php echo $i; ?>][aligndefault]">
                                         <input type="checkbox" value="true" name="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_<?php echo $i; ?>][aligndefault]"<?php if (isset($cameraarray_added_slideshows_array['camera_slide_no_'.$i]['aligndefault']) && $cameraarray_added_slideshows_array['camera_slide_no_'.$i]['aligndefault']=="true") { ?> checked="checked"<?php } ?>>
                                         <small>Switch on the button above if you want to select an option here below, switch it off if you want to use the slideshow default settings</small> 
-                                        <select name="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_<?php echo $i; ?>][alignment]" class="select_alignment">
+                                        <select name="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_<?php echo $i; ?>][alignment]" class="select_alignment letmebe">
                                             <option value="center"<?php if (!isset($cameraarray_added_slideshows_array['camera_slide_no_'.$i]['alignment']) || $cameraarray_added_slideshows_array['camera_slide_no_'.$i]['alignment']=="center") { echo ' selected="selected"'; } ?>>center</option>
                                             <option value="topLeft"<?php if (isset($cameraarray_added_slideshows_array['camera_slide_no_'.$i]['alignment']) && $cameraarray_added_slideshows_array['camera_slide_no_'.$i]['alignment']=="topLeft") { echo ' selected="selected"'; } ?>>topLeft</option>
                                             <option value="topCenter"<?php if (isset($cameraarray_added_slideshows_array['camera_slide_no_'.$i]['alignment']) && $cameraarray_added_slideshows_array['camera_slide_no_'.$i]['alignment']=="topCenter") { echo ' selected="selected"'; } ?>>topCenter</option>
@@ -813,14 +821,14 @@ $cameraarray_added_slideshows = camera_get_option( 'cameraarray_'.$_GET['slidesh
                                             <option value="bottomCenter"<?php if (isset($cameraarray_added_slideshows_array['camera_slide_no_'.$i]['alignment']) && $cameraarray_added_slideshows_array['camera_slide_no_'.$i]['alignment']=="bottomCenter") { echo ' selected="selected"'; } ?>>bottomCenter</option>
                                             <option value="bottomRight"<?php if (isset($cameraarray_added_slideshows_array['camera_slide_no_'.$i]['alignment']) && $cameraarray_added_slideshows_array['camera_slide_no_'.$i]['alignment']=="bottomRight") { echo ' selected="selected"'; } ?>>bottomRight</option>
                                         </select>
-                                        <br>  
+                    <div class="clear"></div><br>
                                         <label for="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_<?php echo $i; ?>][portrait]">Slide portrait:</label>
                                         <select name="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_<?php echo $i; ?>][portrait]">
                                             <option value="default"<?php if (!isset($cameraarray_added_slideshows_array['camera_slide_no_'.$i]['portrait']) || $cameraarray_added_slideshows_array['camera_slide_no_'.$i]['portrait']=="center") { echo ' selected="selected"'; } ?>>default</option>
                                             <option value="true"<?php if (isset($cameraarray_added_slideshows_array['camera_slide_no_'.$i]['portrait']) && $cameraarray_added_slideshows_array['camera_slide_no_'.$i]['portrait']=="yes") { echo ' selected="selected"'; } ?>>yes</option>
                                             <option value="false"<?php if (isset($cameraarray_added_slideshows_array['camera_slide_no_'.$i]['portrait']) && $cameraarray_added_slideshows_array['camera_slide_no_'.$i]['portrait']=="no") { echo ' selected="selected"'; } ?>>no</option>
                                         </select>
-                                        <br><br>  
+                    <div class="clear"></div><br>  
                                         <label for="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_<?php echo $i; ?>][fx]">Slide effects:</label>
                                         <select name="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_<?php echo $i; ?>][fx][]" multiple>
                                             <option value="default"<?php if (!isset($cameraarray_added_slideshows_array['camera_slide_no_'.$i]['fx']) || (is_array($cameraarray_added_slideshows_array['camera_slide_no_'.$i]['fx']) && in_array("default",$cameraarray_added_slideshows_array['camera_slide_no_'.$i]['fx']))) { echo ' selected="selected"'; } ?>>default</option>
@@ -854,7 +862,7 @@ $cameraarray_added_slideshows = camera_get_option( 'cameraarray_'.$_GET['slidesh
                                             <option value="scrollBottom"<?php if (isset($cameraarray_added_slideshows_array['camera_slide_no_'.$i]['fx']) && is_array($cameraarray_added_slideshows_array['camera_slide_no_'.$i]['fx']) && in_array("scrollBottom",$cameraarray_added_slideshows_array['camera_slide_no_'.$i]['fx'])) { echo ' selected="selected"'; } ?>>scrollBottom</option>
                                             <option value="scrollHorz"<?php if (isset($cameraarray_added_slideshows_array['camera_slide_no_'.$i]['fx']) && is_array($cameraarray_added_slideshows_array['camera_slide_no_'.$i]['fx']) && in_array("scrollHorz",$cameraarray_added_slideshows_array['camera_slide_no_'.$i]['fx'])) { echo ' selected="selected"'; } ?>>scrollHorz</option>
                                         </select>
-                                        <br><br>
+                    <div class="clear"></div><br>  
                                         <label for="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_<?php echo $i; ?>][easing]">Slide easing:</label>
                                         <select name="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_<?php echo $i; ?>][easing]">
                                             <option value="default"<?php if (!isset($cameraarray_added_slideshows_array['camera_slide_no_'.$i]['easing']) || $cameraarray_added_slideshows_array['camera_slide_no_'.$i]['easing']=='default') { echo ' selected="selected"'; } ?>>default</option>
@@ -891,7 +899,7 @@ $cameraarray_added_slideshows = camera_get_option( 'cameraarray_'.$_GET['slidesh
                                             <option value="easeOutBounce"<?php if (isset($cameraarray_added_slideshows_array['camera_slide_no_'.$i]['easing']) && $cameraarray_added_slideshows_array['camera_slide_no_'.$i]['easing']=='easeOutBounce') { echo ' selected="selected"'; } ?>>easeOutBounce</option>
                                             <option value="easeInOutBounce"<?php if (isset($cameraarray_added_slideshows_array['camera_slide_no_'.$i]['easing']) && $cameraarray_added_slideshows_array['camera_slide_no_'.$i]['easing']=='easeInOutBounce') { echo ' selected="selected"'; } ?>>easeInOutBounce</option>
                                         </select>
-                                        <br><br>
+                    <div class="clear"></div><br>  
                                         <div class="camera_ui_slider milliseconds">
                                             <label for="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_<?php echo $i; ?>][time]">Time:
                                                 <small>Leave blank to use the default settings</small>
@@ -900,7 +908,7 @@ $cameraarray_added_slideshows = camera_get_option( 'cameraarray_'.$_GET['slidesh
                                             <div class="clear"></div>
                                             <div class="camera_slider_cursor"></div>
                                         </div><!-- .camera_ui_slider -->
-                                        <br>
+                    <div class="clear"></div><br>  
                                         <div class="camera_ui_slider milliseconds">
                                             <label for="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_<?php echo $i; ?>][transperiod]">Transition period:
                                                 <small>Leave blank to use the default settings</small>

@@ -584,12 +584,15 @@ function print_camera_plugindir() {
 	require (ABSPATH . WPINC . '/pluggable.php');
 	global $plugindir, $current_user, $display_name;
 	get_currentuserinfo();
-
-	echo '<script type="text/javascript">var plugindir = "'.$plugindir.'";</script>';
+	
+	echo '<script type="text/javascript">var plugindir = "'.$plugindir.'";';
 
 	if(is_user_logged_in()){
-			echo '<script type="text/javascript">var pixtest = "'.$current_user->display_name.'";</script>';
+			echo 'var pixtest = "'.$current_user->display_name.'"; ';
 	}
+	echo 'var pix_width = "'.get_option( 'thumbnail_size_w' ).'"; ';
+	echo 'var pix_height = "'.get_option( 'thumbnail_size_h' ).'"; ';
+ 	echo '</script>';
 }
 add_action('admin_head', 'print_camera_plugindir');
 
