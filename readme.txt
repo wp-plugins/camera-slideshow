@@ -43,6 +43,9 @@ if (function_exists('camera_meta_slideshow')) {
 
 == Changelog ==
 
+= 1.1.1b =
+* 2012.04.24 - Fixed some misprints, sorry
+
 = 1.1.1 =
 * 2012.04.23 - Fixed an issue with IE, and added some features to the admin panel
 
