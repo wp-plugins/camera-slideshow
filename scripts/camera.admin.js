@@ -239,65 +239,16 @@ function show_error(t) {
 function simple_tabs(){
 	var active_parent = jQuery('#camera_admin_mainnav_inner a.current').parent().index();
 	var active_tab = localStorage.getItem("active_tab_"+active_parent);
-	var l = jQuery('.camera_inner_tabs a').length;
+	var l = jQuery('.camera_inner_tabs.dyna_tabs #sort_slideshow option').length;
 	if(typeof active_tab == 'undefined' || active_tab == false || active_tab == null || active_tab >= l) {
 		active_tab = 0;
 	}
 
-	if(!jQuery('.camera_inner_tabs').hasClass('dyna_tabs')){
-		var tab = jQuery('.camera_inner_tabs a').eq(active_tab).addClass('current').attr('href');
-		jQuery(tab).show();
-	}
-
- 	if(jQuery('.camera_inner_tabs a').eq(active_tab).hasClass('twitter_alert')){
-		jQuery('a.twitter_alert').removeClass('twitter_alert');
-	}
-
-	
-	
-	if(jQuery('.camera_inner_tabs a').eq(active_tab).attr('id')=='camera_tweet_submit'){
-		var data = jQuery('form#camera_tweet_form').serialize();
-		if(pixtest != 'pix_test'){
-			var updateurl = ajaxurl;
-		} else {
-			var updateurl = plugindir+'lib/camera_session.php';
-		}
-		jQuery.post(updateurl, data)
-	}
-	
-
-	jQuery('.camera_inner_tabs.static_tabs a').live('click',function(){
-		var t = jQuery(this),
-			c = jQuery('.camera_inner_tabs.static_tabs a.current');
-		tab = t.attr('href');
-		if (Modernizr.localstorage) {
-			var ind = t.index();
-			localStorage.setItem("active_tab_"+active_parent, ind)
-		}
-		if(t.hasClass('twitter_alert')){
-			jQuery('a.twitter_alert').removeClass('twitter_alert');
-		}
-		
-		if(t.attr('id')=='camera_tweet_submit'){
-			var data = jQuery('form#camera_tweet_form').serialize();
-			jQuery.post(ajaxurl, data);
-		}
-	
-		jQuery('#camera_tab_content > div:visible').fadeOut(200,function(){
-			jQuery(tab).fadeIn(200);
-			c.removeClass('current');
-			t.addClass('current');
-			camera_sort();
-			toggle_panels();
-		});
-		return false;
-	});
-	
-
-	if(jQuery('.camera_inner_tabs').hasClass('dyna_tabs') && !jQuery('.camera_inner_tabs.dyna_tabs a.current').length){
-		var t = jQuery('.camera_inner_tabs.dyna_tabs a').eq(active_tab),
-			c = jQuery('.camera_inner_tabs.dyna_tabs a.current');
-		page = t.attr('href');
+	if(jQuery('.camera_inner_tabs').hasClass('dyna_tabs')){
+		var t = jQuery('.camera_inner_tabs.dyna_tabs #sort_slideshow option').eq(active_tab),
+			page = t.val();
+			alert(page);
+		t.prop('selected',true);
 		if (Modernizr.localstorage) {
 			var ind = t.index();
 			localStorage.setItem("active_tab_"+active_parent, ind)
@@ -310,12 +261,11 @@ function simple_tabs(){
 		jQuery.ajax({
 			url: page,
 			success: function(loadeddata){
-				c.removeClass('current');
-				t.addClass('current');
 				var html = jQuery("<div/>").append(loadeddata.replace(/<script(.|\s)*?\/script>/g, "")).find('#camera_dynamic_tab').html();
 				jQuery('#camera_tab_loading').fadeOut(100,function(){
 					jQuery('#camera_tab_target').html(html);
 					camera_sort();
+					fakeSelect();
 					camera_fakeready();
 					camera_farbtastic();
 					toggle_panels();
@@ -333,10 +283,10 @@ function simple_tabs(){
 		});
 	}
 
-	jQuery('.camera_inner_tabs.dyna_tabs a').live('click',function(){
+	jQuery('.camera_inner_tabs.dyna_tabs #sort_slideshow').live('change',function(){
 		var t = jQuery(this),
-			c = jQuery('.camera_inner_tabs.dyna_tabs a.current');
-		page = t.attr('href');
+			c = jQuery('.camera_inner_tabs.dyna_tabs #sort_slideshow option:selected');
+		page = c.val();
 		if (Modernizr.localstorage) {
 			var ind = t.index();
 			localStorage.setItem("active_tab_"+active_parent, ind)
@@ -348,6 +298,7 @@ function simple_tabs(){
 	
 		jQuery('#camera_tab_target > div:visible').fadeTo(200,.2);
 		jQuery('#camera_tab_loading').fadeIn(100);
+
 		jQuery.ajax({
 			url: page,
 			success: function(loadeddata){
@@ -357,6 +308,7 @@ function simple_tabs(){
 				jQuery('#camera_tab_loading').fadeOut(100,function(){
 					jQuery('#camera_tab_target').html(html);
 					camera_sort();
+					fakeSelect();
 					camera_fakeready();
 					camera_farbtastic();
 					toggle_panels();
@@ -393,7 +345,7 @@ jQuery(function(){
 		if(t.hasClass('camera_edit_icon')){
 			var active_parent = 3;
 			var ind = t.parents('.camera_row').index();
-			localStorage.setItem("active_tab_"+active_parent, ind)
+			localStorage.setItem("active_tab_"+active_parent, ind);
 		}
 		if (t.hasClass('not_tabbed')){
 			return true;
@@ -420,6 +372,7 @@ jQuery(function(){
 						jQuery('#camera_tab_content').fadeTo(400,1);
 						jQuery('#camera_admin_tabnav > div').fadeTo(400,1,function(){
 							simple_tabs();
+							fakeSelect();
 							camera_sort();
 							camera_fakeready();
 							camera_farbtastic();
@@ -435,7 +388,7 @@ jQuery(function(){
 						} else {
 							var ind = th.parent().index();
 						}
-						localStorage.setItem("active_tab", ind)
+						localStorage.setItem("active_tab", ind);
 					}
 				},
 				error: function(){
@@ -469,6 +422,9 @@ jQuery(function(){
 			jQuery(p).append(cloned);
 			cloned.fadeIn(200);
 			camera_sort_update();
+			jQuery('select.clone_select',cloned).removeClass('clone_select');
+			fakeSelect();
+			camera_ui_sliders();
 			toggle_panels();
 			camera_farbtastic();
 			return false;
@@ -638,71 +594,8 @@ function camera_fakeready(){
 		jQuery('.select_option',p).removeClass('selected');	
 		t.addClass('selected');	
 	});
-
-/***************************************
-*
-*	UI sliders
-*
-***************************************/
-	jQuery('.camera_ui_slider').each(function(){
-		var t = jQuery(this);
-		var value = jQuery('input',t).val();
-		t.prev().find('.preview_pattern').not('.pattern_none').animate({opacity:value},0);
-		if(t.hasClass('milliseconds')){
-			var mi = 0;
-			var m = 20000;
-			var s = 100;
-		} else if(t.hasClass('opacity')){
-			var mi = 0;
-			var m = 1;
-			var s = 0.05;
-		} else if(t.hasClass('border')){
-			var mi = 0;
-			var m = 50;
-			var s = 1;
-		} else if(t.hasClass('size')){
-			var mi = 0;
-			var m = 2000;
-			var s = 1;
-		} else if(t.hasClass('difference')){
-			var mi = 0;
-			var m = 1000;
-			var s = 1;
-		} else {
-			var mi = 0;
-			var m = 200;
-			var s = 1;
-		}
-		jQuery('.camera_slider_cursor',t).slider({
-			range: 'min',
-			value: value,
-			min: mi,
-			max: m,
-			step: s,
-			slide: function( event, ui ) {
-				jQuery('input',t).val( ui.value );
-				if(jQuery(t).hasClass('forPattern')){
-					t.prev().find('.preview_pattern').not('.pattern_none').animate({opacity:ui.value},0);
-				}
-			}
-		});
-		jQuery('input',t).keyup(function(){
-			var v = jQuery('input',t).val();
-			jQuery('.camera_slider_cursor',t).slider({
-				value: v,
-				min: 0,
-				max: m,
-				step: s,
-				slide: function( event, ui ) {
-					jQuery('input',t).val( ui.value );
-					// Pattern opacity preview
-					if(jQuery(t).hasClass('forPattern')){
-						t.prev().find('.preview_pattern').not('.pattern_none').animate({opacity:ui.value},0);
-					}
-				}
-			});
-		})
-	});
+	
+	camera_ui_sliders();
 
 /***************************************
 *
@@ -804,23 +697,6 @@ function camera_fakeready(){
 		});
 	}
 	
-/***************************************
-*
-*	Tweets row
-*
-***************************************/
-
-	jQuery('.camera_row.tweets').hover(function(){
-		jQuery(this).addClass('hover');
-	},function(){
-		jQuery(this).removeClass('hover');
-	});
-	
-	jQuery('.camera_row.tweets').click(function(event){
-		var a = jQuery('small',this);
-		a.trigger('click');
-	});
-
 }
 
 function toggle_panels(){
@@ -839,6 +715,73 @@ function toggle_panels(){
 	});
 }
 
+function camera_ui_sliders(){
+/***************************************
+*
+*	UI sliders
+*
+***************************************/
+	jQuery('.camera_ui_slider').each(function(){
+		var t = jQuery(this);
+		var value = jQuery('input',t).val();
+		t.prev().find('.preview_pattern').not('.pattern_none').animate({opacity:value},0);
+		if(t.hasClass('milliseconds')){
+			var mi = 0;
+			var m = 20000;
+			var s = 100;
+		} else if(t.hasClass('opacity')){
+			var mi = 0;
+			var m = 1;
+			var s = 0.05;
+		} else if(t.hasClass('border')){
+			var mi = 0;
+			var m = 50;
+			var s = 1;
+		} else if(t.hasClass('size')){
+			var mi = 0;
+			var m = 2000;
+			var s = 1;
+		} else if(t.hasClass('difference')){
+			var mi = 0;
+			var m = 1000;
+			var s = 1;
+		} else {
+			var mi = 0;
+			var m = 200;
+			var s = 1;
+		}
+		jQuery('.camera_slider_cursor',t).slider({
+			range: 'min',
+			value: value,
+			min: mi,
+			max: m,
+			step: s,
+			slide: function( event, ui ) {
+				jQuery('input',t).val( ui.value );
+				if(jQuery(t).hasClass('forPattern')){
+					t.prev().find('.preview_pattern').not('.pattern_none').animate({opacity:ui.value},0);
+				}
+			}
+		});
+		jQuery('input',t).keyup(function(){
+			var v = jQuery('input',t).val();
+			jQuery('.camera_slider_cursor',t).slider({
+				value: v,
+				min: 0,
+				max: m,
+				step: s,
+				slide: function( event, ui ) {
+					jQuery('input',t).val( ui.value );
+					// Pattern opacity preview
+					if(jQuery(t).hasClass('forPattern')){
+						t.prev().find('.preview_pattern').not('.pattern_none').animate({opacity:ui.value},0);
+					}
+				}
+			});
+		})
+	});
+
+}
 
 	
 /******************************************************
@@ -897,17 +840,17 @@ jQuery(function(){
 				window.formfield_image = '';
 				tb_remove();
 				jQuery.ajax({
-					url:imgurlNoF+'-150x150'+onlyFormat,
+					url:imgurlNoF+'-'+pix_width+'x'+pix_height+onlyFormat,
 					type:'HEAD',
 					error:
 						function(){
 							var imgurlNoF2 = imgurlNoF.substring(0,imgurlNoF.lastIndexOf('-'));
-							var preview = imgurlNoF2+'-150x150'+onlyFormat;
+							var preview = imgurlNoF2+'-'+pix_width+'x'+pix_height+onlyFormat;
 							upThumb.attr('src',preview).show();
 						},
 					success:
 						function(){
-							var preview = imgurlNoF+'-150x150'+onlyFormat;
+							var preview = imgurlNoF+'-'+pix_width+'x'+pix_height+onlyFormat;
 							upThumb.attr('src',preview).show();
 						}
 				});
@@ -943,3 +886,41 @@ jQuery(function(){
 	});
 
 });
+/******************************************************
+*
+*	Selects
+*
+******************************************************/
+function fakeSelect(){
+	if (!(jQuery.browser.msie && jQuery.browser.version < 9)) {
+		jQuery('select').not('.letmebe, .clone_select').each(function(){
+			if(!jQuery(this).prop('multiple')){
+			var s = jQuery(this).animate({opacity:0},0).css({display:'block'}).addClass('letmebe'),
+				v = jQuery('option:selected',s).val(),
+				tx = jQuery('option:selected',s).text(),
+				outW = s.width(),
+				fake;
+			s.wrap(
+				'<span class="select_wrap"></div>'
+			);
+			s.after(
+				'<span class="select_fake"><span class="fake_text">'+tx+'</span></span>'
+			);
+			fake = s.next('.select_fake').css({width:outW});
+			s.css({width:fake.outerWidth()});
+			fake.append('<div class="dd_arrow" />').append('<div class="dd_divider" />');
+			
+			s.bind('change',function(){
+				tx = jQuery('option:selected',s).text();
+				fake.find('.fake_text').text(tx);
+			});
+			}
+		});
+	} else {
+		jQuery('select').addClass('letmebe');
+	}
+}
+jQuery(function(){
+	fakeSelect();
+});
+
