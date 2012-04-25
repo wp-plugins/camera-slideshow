@@ -247,7 +247,6 @@ function simple_tabs(){
 	if(jQuery('.camera_inner_tabs').hasClass('dyna_tabs')){
 		var t = jQuery('.camera_inner_tabs.dyna_tabs #sort_slideshow option').eq(active_tab),
 			page = t.val();
-			alert(page);
 		t.prop('selected',true);
 		if (Modernizr.localstorage) {
 			var ind = t.index();
