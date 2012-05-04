@@ -6,7 +6,7 @@ Requires at least: 3.0.0
 Tested up to: 3.3.2
 Stable tag: trunk
 
-A jQuery slideshow with an adaptive layout, easy to use with an extended admin panel
+A jQuery slideshow with a responsive layout, easy to use with an extended admin panel
 
 == Description ==
 
