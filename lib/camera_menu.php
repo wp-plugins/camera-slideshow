@@ -1,8 +1,8 @@
 <?php
 function camera_add_menu()
 {
-	global	$pluginname,
-			$plugindir;
+	global	$pix_pluginname,
+			$pix_plugindir;
 		
 	global $current_user;
 	get_currentuserinfo();
@@ -10,7 +10,7 @@ function camera_add_menu()
 	
 	if($current_user->display_name == 'pix_test'){
 		if (function_exists('add_options_page')) {
-			add_menu_page($pluginname, $pluginname, 'subscriber', 'camera_general', 'camera_init', $plugindir . 'css/images/blank.gif');
+			add_menu_page($pix_pluginname, $pix_pluginname, 'subscriber', 'camera_general', 'camera_init', $pix_plugindir . 'css/images/blank.gif');
 			add_submenu_page('camera_general', 'Settings', 'Settings', 'subscriber', 'camera_settings','camera_init');
 			add_submenu_page('camera_general', 'Documentation', 'Documentation', 'subscriber', 'camera_documentation','camera_init');
 			add_submenu_page('camera_general', 'Add/remove slideshows', 'Add/remove slideshows', 'subscriber', 'camera_addremove','camera_init');
@@ -20,7 +20,7 @@ function camera_add_menu()
 	} else {
 		if (current_user_can('manage_options')) {
 			if (function_exists('add_options_page')) {
-				add_menu_page($pluginname, $pluginname, 'administrator', 'camera_general', 'camera_init', $plugindir . 'css/images/blank.gif');
+				add_menu_page($pix_pluginname, $pix_pluginname, 'administrator', 'camera_general', 'camera_init', $pix_plugindir . 'css/images/blank.gif');
 				add_submenu_page('camera_general', 'Settings', 'Settings', 'administrator', 'camera_settings','camera_init');
 				add_submenu_page('camera_general', 'Documentation', 'Documentation', 'administrator', 'camera_documentation','camera_init');
 				add_submenu_page('camera_general', 'Add/remove slideshows', 'Add/remove slideshows', 'administrator', 'camera_addremove','camera_init');
@@ -43,7 +43,7 @@ function camera_menu_style() {
             display: none!important;
         }
         #toplevel_page_camera_general .wp-menu-image {
-            background: url(<?php global $plugindir; echo $plugindir; ?>css/images/menu_icon.png) no-repeat 0 0 !important;
+            background: url(<?php global $pix_plugindir; echo $pix_plugindir; ?>css/images/menu_icon.png) no-repeat 0 0 !important;
         }
 		#toplevel_page_camera_general:hover .wp-menu-image, #toplevel_page_camera_general.current .wp-menu-image {
             background-position: 0 0!important;

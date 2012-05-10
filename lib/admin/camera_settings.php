@@ -3,7 +3,7 @@
 function camera_settings(){
 	if ($_GET['page']=='camera_settings') { 
 
-global $plugindir;	
+global $pix_plugindir;	
 	
 	
 ?>
@@ -134,7 +134,7 @@ global $plugindir;
                     <div class="camera_color">
                         <label for="camera_caption_bg">Caption background color:</label>
                         <input name="camera_caption_bg" type="text" value="<?php echo camera_get_option('camera_caption_bg'); ?>" />
-                        <img src="<?php echo $plugindir; ?>css/images/color_picker_icon.png" width="30" height="33">
+                        <img src="<?php echo $pix_plugindir; ?>css/images/color_picker_icon.png" width="30" height="33">
                         <div class="colorpicker"></div>
                         <div class="camera_color_arrow"></div>
                     </div><!-- .camera_color -->
@@ -144,7 +144,7 @@ global $plugindir;
                     <div class="camera_color">
                         <label for="camera_caption_text">Caption text color:</label>
                         <input name="camera_caption_text" type="text" value="<?php echo camera_get_option('camera_caption_text'); ?>" />
-                        <img src="<?php echo $plugindir; ?>css/images/color_picker_icon.png" width="30" height="33">
+                        <img src="<?php echo $pix_plugindir; ?>css/images/color_picker_icon.png" width="30" height="33">
                         <div class="colorpicker"></div>
                         <div class="camera_color_arrow"></div>
                     </div><!-- .camera_color -->
@@ -163,7 +163,7 @@ global $plugindir;
                     <div class="camera_color">
                         <label for="camera_commands_bg">Commands background color:</label>
                         <input name="camera_commands_bg" type="text" value="<?php echo camera_get_option('camera_commands_bg'); ?>" />
-                        <img src="<?php echo $plugindir; ?>css/images/color_picker_icon.png" width="30" height="33">
+                        <img src="<?php echo $pix_plugindir; ?>css/images/color_picker_icon.png" width="30" height="33">
                         <div class="colorpicker"></div>
                         <div class="camera_color_arrow"></div>
                     </div><!-- .camera_color -->
@@ -180,7 +180,7 @@ global $plugindir;
                     <div class="camera_color">
                         <label for="camera_commands_active">Commands active color:</label>
                         <input name="camera_commands_active" type="text" value="<?php echo camera_get_option('camera_commands_active'); ?>" />
-                        <img src="<?php echo $plugindir; ?>css/images/color_picker_icon.png" width="30" height="33">
+                        <img src="<?php echo $pix_plugindir; ?>css/images/color_picker_icon.png" width="30" height="33">
                         <div class="colorpicker"></div>
                         <div class="camera_color_arrow"></div>
                     </div><!-- .camera_color -->
@@ -232,7 +232,7 @@ global $plugindir;
                     <div class="camera_color">
                         <label for="camera_thumb_border">Border color of the thumbnails (hover state on pagination):</label>
                         <input name="camera_thumb_border" type="text" value="<?php echo camera_get_option('camera_thumb_border'); ?>" />
-                        <img src="<?php echo $plugindir; ?>css/images/color_picker_icon.png" width="30" height="33">
+                        <img src="<?php echo $pix_plugindir; ?>css/images/color_picker_icon.png" width="30" height="33">
                         <div class="colorpicker"></div>
                         <div class="camera_color_arrow"></div>
                     </div><!-- .camera_color -->

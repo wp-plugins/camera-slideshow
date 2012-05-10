@@ -43,6 +43,9 @@ if (function_exists('camera_meta_slideshow')) {
 
 == Changelog ==
 
+= 1.2.1 =
+* 2012.05.10 - Changed the name of some global variables
+
 = 1.1.1b =
 * 2012.04.24 - Fixed some misprints, sorry
 

@@ -110,15 +110,15 @@ function camera_detectMobile(){
 /*=========================================================================================*/
 
 function camera_admin_styles() {
-	global $plugindir;
+	global $pix_plugindir;
 	if(isset($_GET['page']) && strpos($_GET['page'], 'camera')!==false){
 		wp_enqueue_style('thickbox');
 		wp_enqueue_style('farbtastic');
-		wp_enqueue_style("camera-css", $plugindir."css/jquery.qtip.css", false, "1.0", "all");
-		wp_enqueue_style("qtip-css", $plugindir."css/camera.css", false, "1.0", "all");
+		wp_enqueue_style("camera-css", $pix_plugindir."css/jquery.qtip.css", false, "1.0", "all");
+		wp_enqueue_style("qtip-css", $pix_plugindir."css/camera.css", false, "1.0", "all");
 		wp_enqueue_style ('wp-jquery-ui-dialog');
-		wp_enqueue_style("codemirror-main", $plugindir."css/codemirror.css", false, "1.0", "all");
-		wp_enqueue_style("codemirror-skin", $plugindir."css/default.css", false, "1.0", "all");
+		wp_enqueue_style("codemirror-main", $pix_plugindir."css/codemirror.css", false, "1.0", "all");
+		wp_enqueue_style("codemirror-skin", $pix_plugindir."css/default.css", false, "1.0", "all");
 	}
 }
 add_action('admin_print_styles', 'camera_admin_styles');
@@ -126,28 +126,28 @@ add_action('admin_print_styles', 'camera_admin_styles');
 /*=========================================================================================*/
 
 function camera_admin_enqueue_scripts() {
-	global $plugindir;
+	global $pix_plugindir;
 	if(isset($_GET['page']) && strpos($_GET['page'], 'camera')!==false){
 		wp_enqueue_script('jquery');
 		wp_enqueue_script('media-upload');
 		wp_enqueue_script('thickbox');
 		wp_enqueue_script('farbtastic');
-		wp_register_script('pix-tb', $plugindir."scripts/pix_thickbox.js", array('thickbox'));
+		wp_register_script('pix-tb', $pix_plugindir."scripts/pix_thickbox.js", array('thickbox'));
 		wp_enqueue_script('pix-tb');
 		wp_enqueue_script('jquery-ui-core');
-		wp_enqueue_script('jquery-ui-widget', $plugindir."scripts/jquery.ui.widget.js", array('jquery-ui-core'));
-		wp_enqueue_script('jquery-ui-mouse', $plugindir."scripts/jquery.ui.mouse.js", array('jquery-ui-core'));
+		wp_enqueue_script('jquery-ui-widget', $pix_plugindir."scripts/jquery.ui.widget.js", array('jquery-ui-core'));
+		wp_enqueue_script('jquery-ui-mouse', $pix_plugindir."scripts/jquery.ui.mouse.js", array('jquery-ui-core'));
 		wp_enqueue_script('jquery-ui-sortable');
 		wp_enqueue_script('jquery-ui-draggable');
-		wp_enqueue_script('jquery-ui-position', $plugindir."scripts/jquery.ui.position.js", array('jquery-ui-core'));
+		wp_enqueue_script('jquery-ui-position', $pix_plugindir."scripts/jquery.ui.position.js", array('jquery-ui-core'));
 		wp_enqueue_script('jquery-ui-resizable');
 		wp_enqueue_script('jquery-ui-dialog');
-		wp_enqueue_script('jquery-ui-slider', $plugindir."scripts/jquery.ui.slider.js", array('jquery-ui-mouse'));
-		wp_enqueue_script('modernizer', $plugindir."scripts/modernizr.pix.js", array('jquery'));
-		wp_enqueue_script('codemirror', $plugindir."scripts/codemirror.js", array('jquery'));
-		wp_enqueue_script('codemirror-css', $plugindir."scripts/css.js", array('jquery'));
-		wp_enqueue_script('jquery-qtip', $plugindir."scripts/jquery.qtip.min.js", array('jquery'));
-		wp_enqueue_script('camera-admin', $plugindir."scripts/camera.admin.js", array('jquery'));
+		wp_enqueue_script('jquery-ui-slider', $pix_plugindir."scripts/jquery.ui.slider.js", array('jquery-ui-mouse'));
+		wp_enqueue_script('modernizer', $pix_plugindir."scripts/modernizr.pix.js", array('jquery'));
+		wp_enqueue_script('codemirror', $pix_plugindir."scripts/codemirror.js", array('jquery'));
+		wp_enqueue_script('codemirror-css', $pix_plugindir."scripts/css.js", array('jquery'));
+		wp_enqueue_script('jquery-qtip', $pix_plugindir."scripts/jquery.qtip.min.js", array('jquery'));
+		wp_enqueue_script('camera-admin', $pix_plugindir."scripts/camera.admin.js", array('jquery'));
 	}
 }
 add_action('admin_enqueue_scripts', 'camera_admin_enqueue_scripts');
@@ -155,7 +155,7 @@ add_action('admin_enqueue_scripts', 'camera_admin_enqueue_scripts');
 /*=========================================================================================*/
 
 function camera_url() {
-	global $plugindir;
+	global $pix_plugindir;
 
 	if(isset($_GET['page']) && strpos($_GET['page'], 'camera')!==false){
 		echo '<link id="site_url" data-url="'.site_url().'" />';
@@ -258,12 +258,12 @@ function camera_url_2_link($text) {
 /*=========================================================================================*/
 
 function camera_meta_style(){
-	global $plugindir;
+	global $pix_plugindir;
   
 	if (!is_admin()) {
 		
-		wp_enqueue_style('camera-css-front', $plugindir.'css/camera_front.css', false, '1.0', 'all');
-		wp_enqueue_style('camera-css-colorbox', $plugindir.'css/colorBox'.camera_get_option('camera_colorbox_skin').'/colorbox.css', false, '1.0', 'all');
+		wp_enqueue_style('camera-css-front', $pix_plugindir.'css/camera_front.css', false, '1.0', 'all');
+		wp_enqueue_style('camera-css-colorbox', $pix_plugindir.'css/colorBox'.camera_get_option('camera_colorbox_skin').'/colorbox.css', false, '1.0', 'all');
 		
 	}
   
@@ -304,7 +304,7 @@ function camera_meta_head(){
 
 function camera_meta_slideshow( $slideshow ) {
 	
-	global $plugindir;
+	global $pix_plugindir;
 	$shortcode_found = true;
 	$os = strtolower($_SERVER['HTTP_USER_AGENT']);
 
@@ -376,9 +376,9 @@ function camera_meta_slideshow( $slideshow ) {
 		}
 		if(camera_get_option('camera_timthumb')!='false'){
 			if(camera_get_option('camera_timthumb_cache')!='false'){
-				$thumbtimthumb = $plugindir.'scripts/timthumb.php?src=';
+				$thumbtimthumb = $pix_plugindir.'scripts/timthumb.php?src=';
 			} else {
-				$thumbtimthumb = $plugindir.'scripts/timthumb_no_cache.php?src=';
+				$thumbtimthumb = $pix_plugindir.'scripts/timthumb_no_cache.php?src=';
 			}
 		} else {
 			$thumbtimthumb = '';
@@ -428,7 +428,7 @@ function camera_shortcode( $atts, $content = null ) {
         'slideshow'      => ''
     ), $atts));
 	
-	global $plugindir;
+	global $pix_plugindir;
 	$shortcode_found = true;
 	$os = strtolower($_SERVER['HTTP_USER_AGENT']);
 
@@ -500,9 +500,9 @@ function camera_shortcode( $atts, $content = null ) {
 		}
 		if(camera_get_option('camera_timthumb')!='false'){
 			if(camera_get_option('camera_timthumb_cache')!='false'){
-				$thumbtimthumb = $plugindir.'scripts/timthumb.php?src=';
+				$thumbtimthumb = $pix_plugindir.'scripts/timthumb.php?src=';
 			} else {
-				$thumbtimthumb = $plugindir.'scripts/timthumb_no_cache.php?src=';
+				$thumbtimthumb = $pix_plugindir.'scripts/timthumb_no_cache.php?src=';
 			}
 		} else {
 			$thumbtimthumb = '';
@@ -566,8 +566,8 @@ function register_camera_sc($buttons) {
 
 
 function add_camera_sc($plugin_array) {
-	global $plugindir;
-	$plugin_array['camera_slideshow_sc'] = $plugindir.'/scripts/camera.shortcodes.js';
+	global $pix_plugindir;
+	$plugin_array['camera_slideshow_sc'] = $pix_plugindir.'/scripts/camera.shortcodes.js';
 	return $plugin_array;
 }
 
@@ -582,10 +582,10 @@ add_filter( 'tiny_mce_version', 'camera_refresh_mce');
 
 function print_camera_plugindir() {
 	require (ABSPATH . WPINC . '/pluggable.php');
-	global $plugindir, $current_user, $display_name;
+	global $pix_plugindir, $current_user, $display_name;
 	get_currentuserinfo();
 	
-	echo '<script type="text/javascript">var plugindir = "'.$plugindir.'";';
+	echo '<script type="text/javascript">var plugindir = "'.$pix_plugindir.'";';
 
 	if(is_user_logged_in()){
 			echo 'var pixtest = "'.$current_user->display_name.'"; ';
@@ -599,8 +599,8 @@ add_action('admin_head', 'print_camera_plugindir');
 /*=========================================================================================*/
 
 function front_camera_plugindir() {
-	global $plugindir;
-	echo '<script type="text/javascript">var plugindir = "'.$plugindir.'";</script>';
+	global $pix_plugindir;
+	echo '<script type="text/javascript">var plugindir = "'.$pix_plugindir.'";</script>';
 }
 add_action('wp_head', 'front_camera_plugindir');
 
@@ -612,9 +612,9 @@ add_action('admin_init','camera_metabox');
 
 function camera_metabox()
 {
-	global $plugindir;
+	global $pix_plugindir;
 	$post_types = camera_get_option( 'camera_metabox' );
-	wp_enqueue_style('camera_meta_css', $plugindir . '/css/camera_meta.css');
+	wp_enqueue_style('camera_meta_css', $pix_plugindir . '/css/camera_meta.css');
  
 	foreach ($post_types as $type) 
 	{
@@ -683,7 +683,7 @@ function camera_main_ss_save( $post_id )
 
 add_filter('the_posts', 'camera_enqueue_cond');
 function camera_enqueue_cond($posts){
-	global $plugindir, $shortcode_found;
+	global $pix_plugindir, $shortcode_found;
 	if (empty($posts)) return $posts;
   
 	$shortcode_found = false;
@@ -701,8 +701,8 @@ function camera_enqueue_cond($posts){
   
 	if ($shortcode_found && !is_admin()) {
 		
-		wp_enqueue_style('camera-css-front', $plugindir.'css/camera_front.css', false, '1.0', 'all');
-		wp_enqueue_style('camera-css-colorbox', $plugindir.'css/colorBox'.camera_get_option('camera_colorbox_skin').'/colorbox.css', false, '1.0', 'all');
+		wp_enqueue_style('camera-css-front', $pix_plugindir.'css/camera_front.css', false, '1.0', 'all');
+		wp_enqueue_style('camera-css-colorbox', $pix_plugindir.'css/colorBox'.camera_get_option('camera_colorbox_skin').'/colorbox.css', false, '1.0', 'all');
 		
 	}
   
@@ -712,20 +712,20 @@ function camera_enqueue_cond($posts){
 add_action('init', 'camera_register_scripts');
 
 function camera_register_scripts(){
-global $plugindir;	
+global $pix_plugindir;	
 
 	if(camera_get_option('camera_scripts_footer')=='true'){
 		$pix_jquery = 'jquery-pix';
 	} else {
 		$pix_jquery = 'jquery';
 	}
-	wp_register_script('jquery-pix', $plugindir.'scripts/jquery-1.7.min.js', false, '1.7.0', true);
-	wp_register_script('jquery-hoverIntent', $plugindir.'scripts/jquery.hoverIntent.minified.js', array($pix_jquery));
-	wp_register_script('jquery-easing', $plugindir.'scripts/jquery.easing.1.3.js', array($pix_jquery));
-	wp_register_script('camera-colorbox', $plugindir.'scripts/jquery.colorbox-min.js', array($pix_jquery));
-	wp_register_script('camera-jquery-mobile', $plugindir.'scripts/jquery.mobile.customized.min.js', array($pix_jquery));
-	wp_register_script('camera-slide', $plugindir.'scripts/camera.min.js', array($pix_jquery,'jquery-hoverIntent','jquery-easing'));
-	wp_register_script('camera-init', $plugindir.'scripts/camera.init.js', array($pix_jquery,'camera-slide'));
+	wp_register_script('jquery-pix', $pix_plugindir.'scripts/jquery-1.7.min.js', false, '1.7.0', true);
+	wp_register_script('jquery-hoverIntent', $pix_plugindir.'scripts/jquery.hoverIntent.minified.js', array($pix_jquery));
+	wp_register_script('jquery-easing', $pix_plugindir.'scripts/jquery.easing.1.3.js', array($pix_jquery));
+	wp_register_script('camera-colorbox', $pix_plugindir.'scripts/jquery.colorbox-min.js', array($pix_jquery));
+	wp_register_script('camera-jquery-mobile', $pix_plugindir.'scripts/jquery.mobile.customized.min.js', array($pix_jquery));
+	wp_register_script('camera-slide', $pix_plugindir.'scripts/camera.min.js', array($pix_jquery,'jquery-hoverIntent','jquery-easing'));
+	wp_register_script('camera-init', $pix_plugindir.'scripts/camera.init.js', array($pix_jquery,'camera-slide'));
 }
 
 add_action('wp_footer', 'camera_enqueue_footer');
@@ -827,8 +827,8 @@ function ranger($url){
 /*=========================================================================================*/
 
 function plugin_get_version() {
-	global $pluginpath;
-	$plugin_data = get_plugin_data($pluginpath.'/index.php');
+	global $pix_pluginpath;
+	$plugin_data = get_plugin_data($pix_pluginpath.'/index.php');
 	$plugin_version = $plugin_data['Version'];
 	return $plugin_version;
 }

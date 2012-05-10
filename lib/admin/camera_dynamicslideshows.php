@@ -3,7 +3,7 @@
 function camera_dynamic(){
 	if ($_GET['page']=='camera_dynamic') { 
 	
-global $content_width, $plugindir;	
+global $content_width, $pix_plugindir;	
 if ( ! isset( $content_width ) )
 	$content_width = 920;
 ?>
@@ -23,7 +23,7 @@ $cameraarray_added_slideshows = camera_get_option( 'cameraarray_'.$_GET['slidesh
                     <div class="slide_no"></div><!-- .slide_no -->
                 </div><!-- .handle -->
                 <div>
-                    <div class="camera_imagethumb"><img src="<?php echo $plugindir."css/images/blank.gif"; ?>" width="40"></div>
+                    <div class="camera_imagethumb"><img src="<?php echo $pix_plugindir."css/images/blank.gif"; ?>" width="40"></div>
                     <input type="text" name="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_n][url]" value="<?php if(isset($cameraarray_added_slideshows_array['camera_slide_no_n']['url'])) { echo stripslashes(htmlentities($cameraarray_added_slideshows_array['camera_slides']['camera_slide_no_n']['url'], ENT_QUOTES)); } ?>">
                     <a href="#" class="camera_upload_image wpbutton">Add an image</a>
                 </div>
@@ -33,7 +33,7 @@ $cameraarray_added_slideshows = camera_get_option( 'cameraarray_'.$_GET['slidesh
                 <div class="toggle_div">
                     <label for="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_n][thumb]">Custom thumb:</label>
                     <div>
-                        <div class="camera_imagethumb"><img src="<?php echo $plugindir."css/images/blank.gif"; ?>" width="40"></div>
+                        <div class="camera_imagethumb"><img src="<?php echo $pix_plugindir."css/images/blank.gif"; ?>" width="40"></div>
                         <input type="text" name="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_n][thumb]" value="<?php if(isset($cameraarray_added_slideshows_array['camera_slide_no_n']['thumb'])) { echo stripslashes(htmlentities($cameraarray_added_slideshows_array['camera_slide_no_n']['thumb'], ENT_QUOTES)); } ?>">
                         <a href="#" class="camera_upload_image wpbutton">Add a thumbnail</a>
                         <small><strong>Pay attention:</strong> it's better if all the thumbnails in the slideshow have the same size<br>
@@ -461,7 +461,7 @@ $cameraarray_added_slideshows = camera_get_option( 'cameraarray_'.$_GET['slidesh
                     <div class="camera_color">
                         <label for="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[loaderbgcolor]">Loader background color</label>
                          <input name="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[loaderbgcolor]" type="text" value="<?php if(isset($cameraarray_added_slideshows['loaderbgcolor'])) { echo $cameraarray_added_slideshows['loaderbgcolor']; } else { echo '#222222'; } ?>" />
-                        <img src="<?php echo $plugindir; ?>css/images/color_picker_icon.png" width="30" height="33">
+                        <img src="<?php echo $pix_plugindir; ?>css/images/color_picker_icon.png" width="30" height="33">
                        <div class="colorpicker"></div>
                        <div class="camera_color_arrow"></div>
                     </div><!-- .camera_color -->
@@ -470,7 +470,7 @@ $cameraarray_added_slideshows = camera_get_option( 'cameraarray_'.$_GET['slidesh
                     <div class="camera_color">
                         <label for="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[loadercolor]">Loader color</label>
                          <input name="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[loadercolor]" type="text" value="<?php if(isset($cameraarray_added_slideshows['loadercolor'])) { echo $cameraarray_added_slideshows['loadercolor']; } else { echo '#33ccff'; } ?>" />
-                        <img src="<?php echo $plugindir; ?>css/images/color_picker_icon.png" width="30" height="33">
+                        <img src="<?php echo $pix_plugindir; ?>css/images/color_picker_icon.png" width="30" height="33">
                        <div class="colorpicker"></div>
                        <div class="camera_color_arrow"></div>
                     </div><!-- .camera_color -->
@@ -734,7 +734,7 @@ $cameraarray_added_slideshows = camera_get_option( 'cameraarray_'.$_GET['slidesh
                                     <div class="toggle_div">
                                         <label for="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_<?php echo $i; ?>][thumb]">Custom thumb:</label>
                                         <div>
-                                            <div class="camera_imagethumb"><img src="<?php if(!isset($cameraarray_added_slideshows_array['camera_slide_no_'.$i]['thumb']) || $cameraarray_added_slideshows_array['camera_slide_no_'.$i]['thumb']=='') { echo $plugindir."css/images/blank.gif"; } else { echo get_camera_thumb($cameraarray_added_slideshows_array['camera_slide_no_'.$i]['thumb'],'thumbnail'); } ?>" width="40"></div>
+                                            <div class="camera_imagethumb"><img src="<?php if(!isset($cameraarray_added_slideshows_array['camera_slide_no_'.$i]['thumb']) || $cameraarray_added_slideshows_array['camera_slide_no_'.$i]['thumb']=='') { echo $pix_plugindir."css/images/blank.gif"; } else { echo get_camera_thumb($cameraarray_added_slideshows_array['camera_slide_no_'.$i]['thumb'],'thumbnail'); } ?>" width="40"></div>
                                             <input type="text" name="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_<?php echo $i; ?>][thumb]" value="<?php if(isset($cameraarray_added_slideshows_array['camera_slide_no_'.$i]['thumb'])) { echo stripslashes(htmlentities($cameraarray_added_slideshows_array['camera_slide_no_'.$i]['thumb'], ENT_QUOTES)); } ?>">
                                             <a href="#" class="camera_upload_image wpbutton">Add a thumbnail</a>
                                             <small><strong>Pay attention:</strong> it's better if all the thumbnails in the slideshow have the same size<br>

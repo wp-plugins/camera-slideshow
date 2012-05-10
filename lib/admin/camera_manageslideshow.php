@@ -2,7 +2,7 @@
 function camera_manage(){
 	if ($_GET['page']=='camera_manage') { 
 	
-global $content_width, $plugindir;	
+global $content_width, $pix_plugindir;	
 if ( ! isset( $content_width ) )
 	$content_width = 920;
 

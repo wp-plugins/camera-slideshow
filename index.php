@@ -3,15 +3,15 @@
 Plugin Name: Camera slideshow
 Plugin URI: http://www.pixedelic.com/plugins/camera/wp.php
 Description: An adpative jQuery slideshow, mobile ready
-Version: 1.2.0
+Version: 1.2.1
 Author: Manuel Masia | Pixedelic.com
 Author URI: http://www.pixedelic.com
 License: GPL2
 */
 
-		$pluginname = "Camera";
-		$plugindir = WP_PLUGIN_URL.'/'.str_replace(basename( __FILE__),"",plugin_basename(__FILE__));
-		$pluginpath = dirname( __FILE__ );
+		$pix_pluginname = "Camera";
+		$pix_plugindir = WP_PLUGIN_URL.'/'.str_replace(basename( __FILE__),"",plugin_basename(__FILE__));
+		$pix_pluginpath = dirname( __FILE__ );
 		
 function camera_Install() {
 	global $wpdb;
@@ -39,15 +39,15 @@ register_activation_hook( __FILE__, 'camera_Install' );
 
 
 
-		require_once $pluginpath . '/lib/camera_functions.php';
-		require_once $pluginpath . '/lib/camera_admin.php';
-		require_once $pluginpath . '/lib/camera_menu.php';
-		require_once $pluginpath . '/lib/admin/camera_general.php';
-		require_once $pluginpath . '/lib/admin/camera_documentation.php';
-		require_once $pluginpath . '/lib/admin/camera_settings.php';
-		require_once $pluginpath . '/lib/admin/camera_addremove.php';
-		require_once $pluginpath . '/lib/admin/camera_manageslideshow.php';
-		require_once $pluginpath . '/lib/admin/camera_dynamicslideshows.php';
+		require_once $pix_pluginpath . '/lib/camera_functions.php';
+		require_once $pix_pluginpath . '/lib/camera_admin.php';
+		require_once $pix_pluginpath . '/lib/camera_menu.php';
+		require_once $pix_pluginpath . '/lib/admin/camera_general.php';
+		require_once $pix_pluginpath . '/lib/admin/camera_documentation.php';
+		require_once $pix_pluginpath . '/lib/admin/camera_settings.php';
+		require_once $pix_pluginpath . '/lib/admin/camera_addremove.php';
+		require_once $pix_pluginpath . '/lib/admin/camera_manageslideshow.php';
+		require_once $pix_pluginpath . '/lib/admin/camera_dynamicslideshows.php';
 	
 
 		

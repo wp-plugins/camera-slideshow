@@ -245,11 +245,11 @@ function camera_documentation(){
                 
                 <h4 id="doc_slidebasicoptions">Basic options</h4>
                 <p>Even if not included in the basic option toggle button, the first field, that is "Add an image", is the very basic option. Here you can add the main image to your slide. You can upload it or select it from the media library by using the normal Wordpress media box.<br>
-                <strong>N.B.: after selecting the image, click the &quot;File URL&quot; button <img src="<?php global $plugindir; echo $plugindir; ?>css/images/file_button.png" style="vertical-align:middle;">, otherwise the image won't be add.</strong></p>
+                <strong>N.B.: after selecting the image, click the &quot;File URL&quot; button <img src="<?php global $pix_plugindir; echo $pix_plugindir; ?>css/images/file_button.png" style="vertical-align:middle;">, otherwise the image won't be add.</strong></p>
                 <div style="padding-left:20px">
                     <h5>Custom thumb</h5>
                     <p>It's better if all the thumbnails in the slideshow have the same size. If you leave this field blank and you selected to use TimThumb, the thumbnail will be the main image resized.<br>
-                    <strong>N.B.: after selecting the image, click the &quot;File URL&quot; button <img src="<?php global $plugindir; echo $plugindir; ?>css/images/file_button.png" style="vertical-align:middle;">, otherwise the image won't be add.</strong></p>
+                    <strong>N.B.: after selecting the image, click the &quot;File URL&quot; button <img src="<?php global $pix_plugindir; echo $pix_plugindir; ?>css/images/file_button.png" style="vertical-align:middle;">, otherwise the image won't be add.</strong></p>
 
                     <h5>Link to</h5>
                     <p>Paste here, if you want, the URL to reach by clicking the slide. It's could be, of course, the enlarged image itself.</p>
