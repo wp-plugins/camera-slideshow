@@ -43,6 +43,9 @@ if (function_exists('camera_meta_slideshow')) {
 
 == Changelog ==
 
+= 1.3.0 =
+* 2012.05.23 - Added changes to the jQuery plugin not relevant for Wordpress
+
 = 1.2.1 =
 * 2012.05.10 - Changed the name of some global variables
 
