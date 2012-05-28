@@ -43,6 +43,9 @@ if (function_exists('camera_meta_slideshow')) {
 
 == Changelog ==
 
+= 1.3.1 =
+* 2012.05.28 - Fixed an issues with portrait mode
+
 = 1.3.0 =
 * 2012.05.23 - Added changes to the jQuery plugin not relevant for Wordpress
 
