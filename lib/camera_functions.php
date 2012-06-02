@@ -1,8 +1,11 @@
 <?php
 
-global $current_user, $display_name;
-
-if(!session_id() && $current_user->display_name == 'pix_test') session_start();
+function camera_sessions() {
+    if (!session_id()) {
+        session_start();
+    }
+}
+add_action('init', 'camera_sessions');
 
 function camera_add_option($name, $value) {
 	global $wpdb;
@@ -39,7 +42,7 @@ function camera_get_option($name) {
 					if($_SESSION[$name]=='') {
 						return $return;
 					} else {
-						return stripslashes(html_entity_decode($_SESSION[$name]));
+						return $_SESSION[$name];
 					}
 				} else {
 					return $return;
