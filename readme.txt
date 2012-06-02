@@ -43,6 +43,9 @@ if (function_exists('camera_meta_slideshow')) {
 
 == Changelog ==
 
+= 1.3.2 =
+* 2012.06.01 - Fixed a problem with special characters
+
 = 1.3.1 =
 * 2012.05.28 - Fixed an issues with portrait mode
 

@@ -25,6 +25,9 @@ function camera_get_option($name) {
 		{
 			$return = maybe_unserialize($result->value);
 		}
+		if ( is_string($return ) ) {
+			$return = stripslashes(html_entity_decode($return));
+		}
 
 
 		if(is_user_logged_in()){
@@ -33,7 +36,7 @@ function camera_get_option($name) {
 					if($_SESSION[$name]=='') {
 						return $return;
 					} else {
-						return $_SESSION[$name];
+						return stripslashes(html_entity_decode($_SESSION[$name]));
 					}
 				} else {
 					return $return;
@@ -49,9 +52,19 @@ function camera_get_option($name) {
 	
 }
 
+function camera_esc_option($name) {
+	if ( is_string($name ) ) {
+		$name = esc_attr(camera_get_option($name));
+	}
+	return $name;
+}
+
 function camera_update_option($name, $value) {
 	global $wpdb;
 	$wpdb->camera = $wpdb->prefix . 'camera';
+	if ( is_string($value ) ) {
+		$value = htmlentities($value, ENT_QUOTES);
+	}
 	$value = maybe_serialize( $value );
 	if ($current_user->display_name == 'pix_test') {
 	} else {
