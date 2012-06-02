@@ -43,6 +43,9 @@ if (function_exists('camera_meta_slideshow')) {
 
 == Changelog ==
 
+= 1.3.3 =
+* 2012.06.01 - Fixed a problem with the session
+
 = 1.3.2 =
 * 2012.06.01 - Fixed a problem with special characters
 

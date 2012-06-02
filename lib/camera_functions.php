@@ -1,5 +1,8 @@
 <?php
-if(!session_id()) session_start();
+
+global $current_user, $display_name;
+
+if(!session_id() && $current_user->display_name == 'pix_test') session_start();
 
 function camera_add_option($name, $value) {
 	global $wpdb;
@@ -625,13 +628,18 @@ add_action('admin_init','camera_metabox');
 
 function camera_metabox()
 {
-	global $pix_plugindir;
-	$post_types = camera_get_option( 'camera_metabox' );
-	wp_enqueue_style('camera_meta_css', $pix_plugindir . '/css/camera_meta.css');
- 
-	foreach ($post_types as $type) 
-	{
-		add_meta_box('camera_all_meta', 'Add a Camera slideshow', 'camera_meta_setup', $type, 'normal', 'high');
+	global $pix_plugindir, $current_user, $display_name;
+	
+	if ($current_user->display_name != 'pix_test') {
+		
+		$post_types = camera_get_option( 'camera_metabox' );
+		wp_enqueue_style('camera_meta_css', $pix_plugindir . '/css/camera_meta.css');
+	 
+		foreach ($post_types as $type) 
+		{
+			add_meta_box('camera_all_meta', 'Add a Camera slideshow', 'camera_meta_setup', $type, 'normal', 'high');
+		}
+		
 	}
 }
  

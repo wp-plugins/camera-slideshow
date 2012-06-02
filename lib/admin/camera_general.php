@@ -1,4 +1,9 @@
-<?php if(!session_id()) session_start();
+<?php
+
+global $current_user, $display_name;
+
+if(!session_id() && $current_user->display_name == 'pix_test') session_start();
+
 
 function camera_general(){ 
 	if ($_GET['page']=='camera_general') { 
