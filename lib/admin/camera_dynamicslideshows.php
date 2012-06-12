@@ -56,7 +56,7 @@ $cameraarray_added_slideshows = camera_get_option( 'cameraarray_'.$_GET['slidesh
                 <a href="#" class="toggle_button"><span><span class="toggle_icon_open"></span><span class="toggle_icon_closed"></span>More options</span></a>
                 <div class="toggle_div">
                     <label for="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_n][embed]">Embedded video:</label>
-                    <input type="text" name="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_n][embed]" value="<?php if(isset($cameraarray_added_slideshows_array['camera_slide_no_n']['embed'])) { echo $cameraarray_added_slideshows_array['camera_slide_no_n']['embed']; } ?>">
+                    <textarea name="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_n][embed]"><?php if(isset($cameraarray_added_slideshows_array['camera_slide_no_n']['embed'])) { echo $cameraarray_added_slideshows_array['camera_slide_no_n']['embed']; } ?></textarea>
                     <small>Paste here above an iFrame, set the width and the height to 100% to make the video fit the slideshow</small>
                     <div class="clear"></div>
                     <label for="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_n][embeddisplay]">Display embedded video:</label>
@@ -725,7 +725,7 @@ $cameraarray_added_slideshows = camera_get_option( 'cameraarray_'.$_GET['slidesh
                                     </div><!-- .handle -->
                                     <div>
                                         <div class="camera_imagethumb"><img src="<?php echo get_camera_thumb($cameraarray_added_slideshows_array['camera_slide_no_'.$i]['url'],'thumbnail'); ?>" width="40"></div>
-                                        <input type="text" name="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_<?php echo $i; ?>][url]" value="<?php if(isset($cameraarray_added_slideshows_array['camera_slide_no_'.$i]['url'])) { echo $cameraarray_added_slideshows_array['camera_slide_no_'.$i]['url']; } ?>">
+                                        <input type="text" name="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_<?php echo $i; ?>][url]" value="<?php if(isset($cameraarray_added_slideshows_array['camera_slide_no_'.$i]['url'])) { echo stripslashes(esc_attr($cameraarray_added_slideshows_array['camera_slide_no_'.$i]['url'])); } ?>">
                                         <a href="#" class="camera_upload_image wpbutton">Add an image</a>
                                     </div>
                                     
@@ -735,14 +735,14 @@ $cameraarray_added_slideshows = camera_get_option( 'cameraarray_'.$_GET['slidesh
                                         <label for="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_<?php echo $i; ?>][thumb]">Custom thumb:</label>
                                         <div>
                                             <div class="camera_imagethumb"><img src="<?php if(!isset($cameraarray_added_slideshows_array['camera_slide_no_'.$i]['thumb']) || $cameraarray_added_slideshows_array['camera_slide_no_'.$i]['thumb']=='') { echo $pix_plugindir."css/images/blank.gif"; } else { echo get_camera_thumb($cameraarray_added_slideshows_array['camera_slide_no_'.$i]['thumb'],'thumbnail'); } ?>" width="40"></div>
-                                            <input type="text" name="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_<?php echo $i; ?>][thumb]" value="<?php if(isset($cameraarray_added_slideshows_array['camera_slide_no_'.$i]['thumb'])) { echo $cameraarray_added_slideshows_array['camera_slide_no_'.$i]['thumb']; } ?>">
+                                            <input type="text" name="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_<?php echo $i; ?>][thumb]" value="<?php if(isset($cameraarray_added_slideshows_array['camera_slide_no_'.$i]['thumb'])) { echo stripslashes(esc_attr($cameraarray_added_slideshows_array['camera_slide_no_'.$i]['thumb'])); } ?>">
                                             <a href="#" class="camera_upload_image wpbutton">Add a thumbnail</a>
                                             <small><strong>Pay attention:</strong> it's better if all the thumbnails in the slideshow have the same size<br>
                                             If you select TimThumb option in &quot;Common settings&quot; you can leave this field empty, the original image will be resize, just set a the thumbnail width and height in the General settings toggle panel</small>
                                         </div>
                                         <br>
                                         <label for="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_<?php echo $i; ?>][link]">Link to:</label>
-                                        <input type="text" name="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_<?php echo $i; ?>][link]" value="<?php if(isset($cameraarray_added_slideshows_array['camera_slide_no_'.$i]['link'])) { echo $cameraarray_added_slideshows_array['camera_slide_no_'.$i]['link']; } ?>">
+                                        <input type="text" name="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_<?php echo $i; ?>][link]" value="<?php if(isset($cameraarray_added_slideshows_array['camera_slide_no_'.$i]['link'])) { echo stripslashes(esc_attr($cameraarray_added_slideshows_array['camera_slide_no_'.$i]['link'])); } ?>">
                                         <br><br>
                                         <label for="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_<?php echo $i; ?>][target]">Open the link:</label>
                                         <select name="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_<?php echo $i; ?>][target]">
@@ -757,7 +757,7 @@ $cameraarray_added_slideshows = camera_get_option( 'cameraarray_'.$_GET['slidesh
                                     <a href="#" class="toggle_button"><span><span class="toggle_icon_open"></span><span class="toggle_icon_closed"></span>More options</span></a>
                                     <div class="toggle_div">
                                         <label for="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_<?php echo $i; ?>][embed]">Embedded video:</label>
-                                        <input type="text" name="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_<?php echo $i; ?>][embed]" value="<?php if(isset($cameraarray_added_slideshows_array['camera_slide_no_'.$i]['embed'])) { echo $cameraarray_added_slideshows_array['camera_slide_no_'.$i]['embed']; } ?>">
+                                        <textarea name="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_<?php echo $i; ?>][embed]"><?php if(isset($cameraarray_added_slideshows_array['camera_slide_no_'.$i]['embed'])) { echo stripslashes(esc_attr($cameraarray_added_slideshows_array['camera_slide_no_'.$i]['embed'])); } ?></textarea>
                                         <small>Paste here above an iFrame, set the width and the height to 100% to make the video fit the slideshow</small>
                                         <div class="clear"></div>
                                         <label for="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_<?php echo $i; ?>][embeddisplay]">Display embedded video:</label>
@@ -768,7 +768,7 @@ $cameraarray_added_slideshows = camera_get_option( 'cameraarray_'.$_GET['slidesh
                                         <div class="clear"></div>
                                         <div class="hr"></div>
                                         <label for="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_<?php echo $i; ?>][caption]">Caption:</label>
-                                        <textarea name="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_<?php echo $i; ?>][caption]"><?php if(isset($cameraarray_added_slideshows_array['camera_slide_no_'.$i]['caption'])) { echo $cameraarray_added_slideshows_array['camera_slide_no_'.$i]['caption']; } ?></textarea>
+                                        <textarea name="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_<?php echo $i; ?>][caption]"><?php if(isset($cameraarray_added_slideshows_array['camera_slide_no_'.$i]['caption'])) { echo stripslashes(esc_attr($cameraarray_added_slideshows_array['camera_slide_no_'.$i]['caption'])); } ?></textarea>
                                         <small>You can also use HTML tags</small>
                                         <div class="clear"></div>
                                         <label for="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_<?php echo $i; ?>][captioneffect]">Caption effect:</label>
@@ -787,7 +787,7 @@ $cameraarray_added_slideshows = camera_get_option( 'cameraarray_'.$_GET['slidesh
                                         <div class="clear"></div>
                                         <div class="hr"></div>
                                         <label for="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_<?php echo $i; ?>][html]">Html:</label>
-                                        <textarea name="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_<?php echo $i; ?>][html]"><?php if(isset($cameraarray_added_slideshows_array['camera_slide_no_'.$i]['html'])) { echo $cameraarray_added_slideshows_array['camera_slide_no_'.$i]['html']; } ?></textarea>
+                                        <textarea name="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_<?php echo $i; ?>][html]"><?php if(isset($cameraarray_added_slideshows_array['camera_slide_no_'.$i]['html'])) { echo stripslashes(esc_attr($cameraarray_added_slideshows_array['camera_slide_no_'.$i]['html'])); } ?></textarea>
                                         <br><br>  
                                         <label for="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_<?php echo $i; ?>][htmleffect]">Html effect:</label>
                                         <select name="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_<?php echo $i; ?>][htmleffect]">
@@ -904,7 +904,7 @@ $cameraarray_added_slideshows = camera_get_option( 'cameraarray_'.$_GET['slidesh
                                             <label for="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_<?php echo $i; ?>][time]">Time:
                                                 <small>Leave blank to use the default settings</small>
                                             </label>
-                                            <input type="text" name="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_<?php echo $i; ?>][time]" value="<?php if(isset($cameraarray_added_slideshows_array['camera_slide_no_'.$i]['time']) && $cameraarray_added_slideshows_array['camera_slide_no_'.$i]['time']!='') { echo $cameraarray_added_slideshows_array['camera_slide_no_'.$i]['time']; } ?>">
+                                            <input type="text" name="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_<?php echo $i; ?>][time]" value="<?php if(isset($cameraarray_added_slideshows_array['camera_slide_no_'.$i]['time']) && $cameraarray_added_slideshows_array['camera_slide_no_'.$i]['time']!='') { echo stripslashes(esc_attr($cameraarray_added_slideshows_array['camera_slide_no_'.$i]['time'])); } ?>">
                                             <div class="clear"></div>
                                             <div class="camera_slider_cursor"></div>
                                         </div><!-- .camera_ui_slider -->
@@ -913,7 +913,7 @@ $cameraarray_added_slideshows = camera_get_option( 'cameraarray_'.$_GET['slidesh
                                             <label for="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_<?php echo $i; ?>][transperiod]">Transition period:
                                                 <small>Leave blank to use the default settings</small>
                                             </label>
-                                            <input type="text" name="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_<?php echo $i; ?>][transperiod]" value="<?php if(isset($cameraarray_added_slideshows_array['camera_slide_no_'.$i]['transperiod']) && $cameraarray_added_slideshows_array['camera_slide_no_'.$i]['transperiod']!='') { echo $cameraarray_added_slideshows_array['camera_slide_no_'.$i]['transperiod']; } ?>">
+                                            <input type="text" name="cameraarray_<?php echo sanitize_title($_GET['slideshow']); ?>[camera_slide][camera_slide_no_<?php echo $i; ?>][transperiod]" value="<?php if(isset($cameraarray_added_slideshows_array['camera_slide_no_'.$i]['transperiod']) && $cameraarray_added_slideshows_array['camera_slide_no_'.$i]['transperiod']!='') { echo stripslashes(esc_attr($cameraarray_added_slideshows_array['camera_slide_no_'.$i]['transperiod'])); } ?>">
                                             <div class="clear"></div>
                                             <div class="camera_slider_cursor"></div>
                                         </div><!-- .camera_ui_slider -->
