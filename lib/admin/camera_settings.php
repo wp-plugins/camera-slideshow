@@ -33,6 +33,20 @@ global $pix_plugindir;
                 <div class="clear"></div><!-- .clear -->
 
                 
+                <?php if (current_user_can('activate_plugins')) { ?>
+                    <label for="camera_perm_panel">User level (display Camera plugin only to...):</label>
+                    <select name="camera_perm_panel">
+                        <option value="manage_network" <?php selected( camera_get_option('camera_perm_panel'), 'manage_network' ); ?>>Super admin</option>
+                        <option value="activate_plugins" <?php selected( camera_get_option('camera_perm_panel'), 'activate_plugins' ); ?>>Admin +</option>
+                        <option value="moderate_comments" <?php selected( camera_get_option('camera_perm_panel'), 'moderate_comments' ); ?>>Editor +</option>
+                        <option value="edit_published_posts" <?php selected( camera_get_option('camera_perm_panel'), 'edit_published_posts' ); ?>>Author +</option>
+                        <option value="edit_posts" <?php selected( camera_get_option('camera_perm_panel'), 'edit_posts' ); ?>>Contributor +</option>
+                        <option value="read" <?php selected( camera_get_option('camera_perm_panel'), 'read' ); ?>>Subscriber +</option>
+                    </select>
+            
+                    <div class="clear"></div><!-- .clear -->
+                <?php } ?>
+    
                 <div class="hr"></div>
 
             	<a href="#" class="toggle_button"><span><span class="toggle_icon_open"></span><span class="toggle_icon_closed"></span>Scripts</span></a>

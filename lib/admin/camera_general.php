@@ -72,9 +72,11 @@ Are you sure? You can't restore this slideshow once deleted
 </div><!-- #camera_dialog_inputempty -->
 <?php
 	}
-}	 
+}
 
-if (isset($_GET['page']) && $_GET['page']=='camera_general' && $current_user->display_name == 'pix_test') {
+global $current_user;
+
+if (isset($_GET['page']) && $_GET['page']=='camera_general' && $current_user->display_name == 'pixtest') {
 		
 	foreach ($_POST as $key => $value) {
 		$_SESSION[$key] = $value;
@@ -135,5 +137,6 @@ if (isset($_GET['page']) && $_GET['page']=='camera_general' && $current_user->di
 		
 	}
 }
+
 
 ?>

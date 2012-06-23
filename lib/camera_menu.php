@@ -8,27 +8,14 @@ function camera_add_menu()
 	get_currentuserinfo();
 	
 	
-	if($current_user->display_name == 'pix_test'){
 		if (function_exists('add_options_page')) {
-			add_menu_page($pix_pluginname, $pix_pluginname, 'pix_test', 'camera_general', 'camera_init', $pix_plugindir . 'css/images/blank.gif');
-			add_submenu_page('camera_general', 'Settings', 'Settings', 'pix_test', 'camera_settings','camera_init');
-			add_submenu_page('camera_general', 'Documentation', 'Documentation', 'pix_test', 'camera_documentation','camera_init');
-			add_submenu_page('camera_general', 'Add/remove slideshows', 'Add/remove slideshows', 'pix_test', 'camera_addremove','camera_init');
-			add_submenu_page('camera_general', 'Manage your slideshows', 'Manage your slideshows', 'pix_test', 'camera_manage','camera_init');
-			add_submenu_page('camera_general', 'Dynamic slideshows', 'Dynamic slideshows', 'pix_test', 'camera_dynamic','camera_init');
+			add_menu_page($pix_pluginname, $pix_pluginname, camera_select_role(camera_get_option('camera_perm_panel')), 'camera_general', 'camera_init', $pix_plugindir . 'css/images/blank.gif');
+			add_submenu_page('camera_general', 'Settings', 'Settings', camera_select_role(camera_get_option('camera_perm_panel')), 'camera_settings','camera_init');
+			add_submenu_page('camera_general', 'Documentation', 'Documentation', camera_select_role(camera_get_option('camera_perm_panel')), 'camera_documentation','camera_init');
+			add_submenu_page('camera_general', 'Add/remove slideshows', 'Add/remove slideshows', camera_select_role(camera_get_option('camera_perm_panel')), 'camera_addremove','camera_init');
+			add_submenu_page('camera_general', 'Manage your slideshows', 'Manage your slideshows', camera_select_role(camera_get_option('camera_perm_panel')), 'camera_manage','camera_init');
+			add_submenu_page('camera_general', 'Dynamic slideshows', 'Dynamic slideshows', camera_select_role(camera_get_option('camera_perm_panel')), 'camera_dynamic','camera_init');
 		}
-	} else {
-		if (current_user_can('manage_options')) {
-			if (function_exists('add_options_page')) {
-				add_menu_page($pix_pluginname, $pix_pluginname, 'administrator', 'camera_general', 'camera_init', $pix_plugindir . 'css/images/blank.gif');
-				add_submenu_page('camera_general', 'Settings', 'Settings', 'administrator', 'camera_settings','camera_init');
-				add_submenu_page('camera_general', 'Documentation', 'Documentation', 'administrator', 'camera_documentation','camera_init');
-				add_submenu_page('camera_general', 'Add/remove slideshows', 'Add/remove slideshows', 'administrator', 'camera_addremove','camera_init');
-				add_submenu_page('camera_general', 'Manage your slideshows', 'Manage your slideshows', 'administrator', 'camera_manage','camera_init');
-				add_submenu_page('camera_general', 'Dynamic slideshows', 'Dynamic slideshows', 'administrator', 'camera_dynamic','camera_init');
-			}
-		}
-	}
 }
 
 add_action('admin_menu', 'camera_add_menu');

@@ -3,7 +3,7 @@
 Plugin Name: Camera slideshow
 Plugin URI: http://www.pixedelic.com/plugins/camera/wp.php
 Description: An adpative jQuery slideshow, mobile ready
-Version: 1.3.3.3
+Version: 1.3.3.4
 Author: Manuel Masia | Pixedelic.com
 Author URI: http://www.pixedelic.com
 License: GPL2
@@ -15,7 +15,27 @@ License: GPL2
 		
 function camera_Install() {
 	global $wpdb;
+
+	if (function_exists('is_multisite') && is_multisite()) {
+		$old_blog = $wpdb->blogid;
+		$blogids = $wpdb->get_col($wpdb->prepare("SELECT blog_id FROM $wpdb->blogs"));
+		foreach ($blogids as $blog_id) {
+			switch_to_blog($blog_id);
+			_camera_Install();
+		}
+		switch_to_blog($old_blog);
+		return;
+	} else {
+		_camera_Install();
+		return;
+	}
+}
+	
+function _camera_Install() {
+	global $wpdb;
+	
 	$table_name = $wpdb->prefix . "camera";
+	
 	$charset_collate = '';
 	if ( version_compare(mysql_get_server_info(), '4.1.0', '>=') ) {
 		if ( ! empty($wpdb->charset) )
@@ -26,7 +46,7 @@ function camera_Install() {
 	
 	if( !$wpdb->get_var( "SHOW TABLES LIKE '$table_name'" ) ) {
 	  
-		$sql = "CREATE TABLE " . $table_name . " (
+		$sql = "CREATE TABLE ".$table_name." (
 		name VARCHAR(255) NOT NULL ,
 		value LONGTEXT
 		) $charset_collate;";
@@ -37,7 +57,7 @@ function camera_Install() {
 }
 register_activation_hook( __FILE__, 'camera_Install' );
 
-
+add_action( 'wpmu_new_blog', 'camera_Install' );
 
 		require_once $pix_pluginpath . '/lib/camera_functions.php';
 		require_once $pix_pluginpath . '/lib/camera_admin.php';
@@ -64,3 +84,17 @@ function cameraUninstall() {
 }
 
 register_uninstall_hook( __FILE__, 'cameraUninstall' );
+
+
+add_action( 'wpmu_new_blog', 'camera_newBlog', 10, 6); 		
+ 
+function camera_newBlog($blog_id, $user_id, $domain, $path, $site_id, $meta ) {
+	global $wpdb;
+ 
+	if (is_plugin_active_for_network('camera-slideshow/index.php')) {
+		$old_blog = $wpdb->blogid;
+		switch_to_blog($blog_id);
+		_camera_Install();
+		switch_to_blog($old_blog);
+	}
+}

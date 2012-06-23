@@ -107,7 +107,7 @@ jQuery(function() {
 		
 		if(stopSubmit==false){
 			show_loading(t);
-			if(pixtest != 'pix_test'){
+			if(pixtest != 'pixtest'){
 				var updateurl = ajaxurl;
 			} else {
 				var updateurl = plugindir+'lib/camera_session.php';
@@ -129,7 +129,7 @@ jQuery(function() {
 	});
 	
 	jQuery('#camera_tab_content .camera_delete_icon').live('click',function() {
-		if(pixtest != 'pix_test'){
+		if(pixtest != 'pixtest'){
 			var t = jQuery(this);
 			jQuery('#camera_dialog_deleteslideshow').dialog({
 				height: 150,
@@ -173,7 +173,7 @@ jQuery(function() {
 	});
 
 	jQuery('.camera_disable_pixtest').live('click',function() {
-		if(pixtest == 'pix_test'){
+		if(pixtest == 'pixtest'){
 			jQuery('#camera_dialog_cant').dialog({
 				height: 100,
 				width: 250,
@@ -410,7 +410,7 @@ jQuery(function(){
 ***************************************/
 jQuery(function(){
 	jQuery('.camera_add_slide').live('click',function(){
-		if(pixtest != 'pix_test'){
+		if(pixtest != 'pixtest'){
 			var t = jQuery(this),
 				p = t.next('.camera_slide_sortable_wrap'),
 				form = t.parents('.camera_slides_wrap'),
@@ -433,7 +433,7 @@ jQuery(function(){
 
 jQuery(function(){
 	jQuery('.camera_remove_slide').live('click',function(){
-		if(pixtest != 'pix_test'){
+		if(pixtest != 'pixtest'){
 			var t = jQuery(this);
 			t.parents('.camera_slide_sortable').fadeOut(200,function(){
 				jQuery(this).remove();

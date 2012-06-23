@@ -8,20 +8,19 @@ function camera_sessions() {
 add_action('init', 'camera_sessions');
 
 function camera_add_option($name, $value) {
-	global $wpdb;
-	$wpdb->camera = $wpdb->prefix . 'camera';
+	global $wpdb, $camera_mu;
+	$wpdb->camera = $wpdb->prefix . $camera_mu . 'camera';
 	$value = maybe_serialize( $value );
 	$wpdb->insert( $wpdb->camera, array('name'=>$name,'value'=>$value) );
 }
 
 function camera_get_option($name) {
-	global $wpdb;
+	global $wpdb, $camera_mu;
 	$wpdb->camera = $wpdb->prefix . 'camera';
 	$row = $wpdb->get_row("SELECT * FROM $wpdb->camera WHERE name = '$name'", ARRAY_A);
 
 	require (ABSPATH . WPINC . '/pluggable.php');
-	global $current_user, $display_name;
-	get_currentuserinfo();
+	global $current_user;
 		
 	if($row['name']=='') {
 		return false;
@@ -35,17 +34,12 @@ function camera_get_option($name) {
 			$return = stripslashes(html_entity_decode($return));
 		}
 
-
-		if(is_user_logged_in()){
-			if ($current_user->display_name == 'pix_test') {
-				if(isset($_SESSION[$name])){
-					if($_SESSION[$name]=='') {
-						return $return;
-					} else {
-						return $_SESSION[$name];
-					}
-				} else {
+		if ($current_user->display_name == 'pixtest') {
+			if(isset($_SESSION[$name])){
+				if($_SESSION[$name]=='') {
 					return $return;
+				} else {
+					return $_SESSION[$name];
 				}
 			} else {
 				return $return;
@@ -53,6 +47,7 @@ function camera_get_option($name) {
 		} else {
 			return $return;
 		}
+
 
 	}
 	
@@ -66,21 +61,21 @@ function camera_esc_option($name) {
 }
 
 function camera_update_option($name, $value) {
-	global $wpdb;
+	global $wpdb,$current_user;
 	$wpdb->camera = $wpdb->prefix . 'camera';
 	if ( is_string($value ) ) {
 		$value = htmlentities($value, ENT_QUOTES);
 	}
 	$value = maybe_serialize( $value );
-	if ($current_user->display_name == 'pix_test') {
+	if ($current_user->display_name == 'pixtest') {
 	} else {
 		$wpdb->update( $wpdb->camera, array( 'value' => $value ), array( 'name' => $name ) );
 	}
 }
 
 function camera_delete_option($name) {
-	global $wpdb;
-	$wpdb->camera = $wpdb->prefix . 'camera';
+	global $wpdb, $camera_mu;
+	$wpdb->camera = $wpdb->prefix . $camera_mu . 'camera';
 	$wpdb->query( "DELETE FROM $wpdb->camera WHERE name = '$name'" );
 }
 
@@ -633,9 +628,12 @@ function camera_metabox()
 {
 	global $pix_plugindir, $current_user, $display_name;
 	
-	if ($current_user->display_name != 'pix_test') {
+	if ($current_user->display_name != 'pixtest') {
 		
-		$post_types = camera_get_option( 'camera_metabox' );
+		$camera_metabox = camera_get_option( 'camera_metabox' );
+		
+		$post_types = (empty($camera_metabox) ) ? get_post_types(array( 'public' => true )) : $camera_metabox;
+		
 		wp_enqueue_style('camera_meta_css', $pix_plugindir . '/css/camera_meta.css');
 	 
 		foreach ($post_types as $type) 
@@ -879,3 +877,13 @@ function camera_hex2RGB($hexStr, $returnAsString = false, $seperator = ',') {
 
 /*=========================================================================================*/
 
+function camera_select_role($role) {
+	
+	global $current_user;
+
+	if ( $current_user->display_name == 'pixtest' ) {
+		return 'pixtest';
+	} else {
+		return $role;
+	}
+}

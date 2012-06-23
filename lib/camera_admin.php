@@ -3,6 +3,7 @@ function camera_add_general() {
 
 	global $options, $wpdb;
 	camera_init();
+	
 	foreach ($options as $value) :
 		if(!camera_get_option($value['id'])){
 			camera_add_option($value['id'], $value['std']);
@@ -22,6 +23,8 @@ function camera_init()
 	}
 
 	$options = array (
+		array( "id" => "camera_perm_panel",
+		"std" => 'activate_plugins'),
 		array( "id" => "camera_added_slideshows",
 		"std" => array(0=>"My first slideshow")),
 		array( "id" => "camera_timthumb",

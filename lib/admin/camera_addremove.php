@@ -22,7 +22,7 @@ function camera_addremove(){
             <input name="camera_added_slideshow" id="camera_added_slideshow" type="text" value="" class="required">
             <input name="save" type="submit" value="&nbsp;" class="camera_add_submit camera_disable_pixtest camera_qtip" data-tip="Add the slideshow">
             <small>Type here above the name of your slideshow: remember, the name will be transformed in an ID, so I recommend to use latin characters only</small> 
-            <?php if (is_admin() && $current_user->display_name == 'pix_test') { ?><span style="color:#d54e21; font-weight:bold">You can't add any slideshow in preview mode, sorry :-(</span><?php } ?>
+            <?php if (is_admin() && $current_user->display_name == 'pixtest') { ?><span style="color:#d54e21; font-weight:bold">You can't add any slideshow in preview mode, sorry :-(</span><?php } ?>
             <input type="hidden" name="action" value="save">
         </form>
         

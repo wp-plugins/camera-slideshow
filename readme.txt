@@ -43,6 +43,9 @@ if (function_exists('camera_meta_slideshow')) {
 
 == Changelog ==
 
+= 1.3.3.4 =
+* 2012.06.23 - Fixed some problems with WPMU and add the capabilities selection
+
 = 1.3.3.3 =
 * 2012.06.17 - Fixed a misprint
 
