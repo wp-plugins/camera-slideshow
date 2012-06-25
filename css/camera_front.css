@@ -19,6 +19,7 @@
 	list-style: none
 }
 .camera_wrap {
+	direction: ltr;
 	display: none;
 	float: left;
 	position: relative;

@@ -172,6 +172,7 @@ ul, li {
 }
 #camera_admin_wrap {
 	color: #1d1d1d;
+	direction: ltr;
 	display: block;
 	font-family: "HelveticaNeue","Helvetica Neue",sans-serif;
 	font-size: 12px;
