@@ -43,6 +43,9 @@ if (function_exists('camera_meta_slideshow')) {
 
 == Changelog ==
 
+= 1.3.4 =
+* 2012.06.25 - Fixed (again) an issue with html direction attribute (if some rtl user wanted to help me to translate and create the correct stylesheet it would be great)
+
 = 1.3.3.5 =
 * 2012.06.25 - Fixed issues with html direction attribute (if some rtl user wanted to help me to translate and create the correct stylesheet it would be great)
 
