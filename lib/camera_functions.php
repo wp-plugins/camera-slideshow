@@ -597,7 +597,6 @@ add_filter( 'tiny_mce_version', 'camera_refresh_mce');
 function print_camera_plugindir() {
 	require (ABSPATH . WPINC . '/pluggable.php');
 	global $pix_plugindir, $current_user, $display_name;
-	get_currentuserinfo();
 	
 	echo '<script type="text/javascript">var plugindir = "'.$pix_plugindir.'";';
 
@@ -620,9 +619,7 @@ add_action('wp_head', 'front_camera_plugindir');
 
 /*=========================================================================================*/
 
-define('CAMERA_PATH',ABSPATH.'wp-content/plugins/camera-slideshow/');
- 
-add_action('admin_init','camera_metabox');
+add_action('add_meta_boxes','camera_metabox');
 
 function camera_metabox()
 {
@@ -644,6 +641,7 @@ function camera_metabox()
 	}
 }
  
+define('CAMERA_PATH',ABSPATH.'wp-content/plugins/camera-slideshow/');
 function camera_meta_setup()
 {
 	global $post;

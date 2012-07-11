@@ -6,7 +6,6 @@ function camera_addremove(){
 	
 	require (ABSPATH . WPINC . '/pluggable.php');
 	global $current_user, $display_name;
-	get_currentuserinfo();
 
 ?>
 

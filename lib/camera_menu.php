@@ -5,7 +5,6 @@ function camera_add_menu()
 			$pix_plugindir;
 		
 	global $current_user;
-	get_currentuserinfo();
 	
 	
 		if (function_exists('add_options_page')) {

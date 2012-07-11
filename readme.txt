@@ -3,7 +3,7 @@ Contributors: manuelmasia
 Donate link: http://www.pixedelic.com/plugins/camera/donate.php
 Tags: slideshow, jQuery, adaptive, responsive, lazy loading, mobile, drag and drop, admin panel, shortcode
 Requires at least: 3.0.0
-Tested up to: 3.3.2
+Tested up to: 3.4.1
 Stable tag: trunk
 
 A jQuery slideshow with a responsive layout, easy to use with an extended admin panel
@@ -43,12 +43,14 @@ if (function_exists('camera_meta_slideshow')) {
 
 == Changelog ==
 
+= 1.3.4.1 =
+* 2012.07.11 - Fixed an issue with the shortcode button and the custom menu on WPMU when BBPress is installed (yes, a very strange bug), and fixed a bug with WPMU
+
 = 1.3.4 =
 * 2012.06.25 - Fixed (again) an issue with html direction attribute (if some rtl user wanted to help me to translate and create the correct stylesheet it would be great)
 
 = 1.3.3.5 =
 * 2012.06.25 - Fixed issues with html direction attribute (if some rtl user wanted to help me to translate and create the correct stylesheet it would be great)
-
 = 1.3.3.4 =
 * 2012.06.23 - Fixed some problems with WPMU and add the capabilities selection
 
