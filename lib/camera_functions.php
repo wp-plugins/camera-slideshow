@@ -10,11 +10,16 @@ add_action('init', 'camera_sessions');
 function camera_add_option($name, $value) {
 	global $wpdb;
 	$wpdb->camera = $wpdb->prefix . 'camera';
+	$table_name = $wpdb->camera;
 	$value = maybe_serialize( $value );
-	$query = "SELECT * FROM $wpdb->camera WHERE name='$name' ";
-	$result = mysql_query($query) or die(mysql_error());
-	if ( !mysql_num_rows($result) ) {
+	if( !$wpdb->get_var( "SHOW TABLES LIKE '$table_name'" ) ) {
 		$wpdb->insert( $wpdb->camera, array('name'=>$name,'value'=>$value) );
+	} else {
+		$query = "SELECT * FROM $wpdb->camera WHERE name='$name' ";
+		$result = mysql_query($query) or die(mysql_error());
+		if ( !mysql_num_rows($result) ) {
+			$wpdb->insert( $wpdb->camera, array('name'=>$name,'value'=>$value) );
+		}
 	}
 }
 
@@ -850,7 +855,7 @@ function ranger($url){
 
 /*=========================================================================================*/
 
-function plugin_get_version() {
+function camera_get_version() {
 	global $pix_pluginpath;
 	$plugin_data = get_plugin_data($pix_pluginpath.'/index.php');
 	$plugin_version = $plugin_data['Version'];

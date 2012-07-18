@@ -7,7 +7,7 @@ function camera_general(){
 ?>
 <div id="camera_admin_wrap" class="wrap">
 	<h2>
-        Camera slideshow ver. <span style="color:#d54e21; font-weight:bold"><?php echo plugin_get_version(); ?></span><br>
+        Camera slideshow ver. <span style="color:#d54e21; font-weight:bold"><?php echo camera_get_version(); ?></span><br>
     </h2>
     
     

@@ -43,6 +43,9 @@ if (function_exists('camera_meta_slideshow')) {
 
 == Changelog ==
 
+= 1.3.4.3 =
+* 2012.07.18 - Fixed another issue with the database table
+
 = 1.3.4.2 =
 * 2012.07.18 - Fixed an issue with the database table
 
