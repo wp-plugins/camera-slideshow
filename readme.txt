@@ -1,6 +1,6 @@
 === Camera slideshow ===
 Contributors: manuelmasia
-Donate link: http://www.pixedelic.com/plugins/camera/donate.php
+Donate link: http://www.pixedelic.com/plugins/camera
 Tags: slideshow, jQuery, adaptive, responsive, lazy loading, mobile, drag and drop, admin panel, shortcode
 Requires at least: 3.0.0
 Tested up to: 3.4.1
