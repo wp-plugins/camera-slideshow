@@ -3,7 +3,7 @@
 Plugin Name: Camera slideshow
 Plugin URI: http://www.pixedelic.com/plugins/camera/wp.php
 Description: An adpative jQuery slideshow, mobile ready
-Version: 1.3.4.1
+Version: 1.3.4.2
 Author: Manuel Masia | Pixedelic.com
 Author URI: http://www.pixedelic.com
 License: GPL2
@@ -47,12 +47,25 @@ function _camera_Install() {
 	if( !$wpdb->get_var( "SHOW TABLES LIKE '$table_name'" ) ) {
 	  
 		$sql = "CREATE TABLE ".$table_name." (
-		name VARCHAR(255) NOT NULL ,
+		name VARCHAR(255) NOT NULL,
 		value LONGTEXT
 		) $charset_collate;";
 	
 	   require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
 	   dbDelta($sql);
+	} else {
+		if( !$wpdb->get_var( "SHOW TABLES LIKE ".$table_name."_hack" ) ) {
+			$wpdb->query("CREATE TABLE ".$table_name."_hack as
+				SELECT * FROM $table_name WHERE 1 GROUP BY name;");
+		}
+			
+		$wpdb->query("DROP TABLE $table_name;");
+
+		$wpdb->query("CREATE TABLE $table_name as
+			SELECT * FROM ".$table_name."_hack WHERE 1 GROUP BY name;");
+			
+		$wpdb->query("DROP TABLE ".$table_name."_hack;");
+
 	}
 }
 register_activation_hook( __FILE__, 'camera_Install' );

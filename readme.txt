@@ -43,6 +43,9 @@ if (function_exists('camera_meta_slideshow')) {
 
 == Changelog ==
 
+= 1.3.4.2 =
+* 2012.07.18 - Fixed an issue with the database table
+
 = 1.3.4.1 =
 * 2012.07.11 - Fixed an issue with the shortcode button and the custom menu on WPMU when BBPress is installed (yes, a very strange bug), and fixed a bug with WPMU
 

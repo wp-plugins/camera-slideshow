@@ -8,10 +8,14 @@ function camera_sessions() {
 add_action('init', 'camera_sessions');
 
 function camera_add_option($name, $value) {
-	global $wpdb, $camera_mu;
-	$wpdb->camera = $wpdb->prefix . $camera_mu . 'camera';
+	global $wpdb;
+	$wpdb->camera = $wpdb->prefix . 'camera';
 	$value = maybe_serialize( $value );
-	$wpdb->insert( $wpdb->camera, array('name'=>$name,'value'=>$value) );
+	$query = "SELECT * FROM $wpdb->camera WHERE name='$name' ";
+	$result = mysql_query($query) or die(mysql_error());
+	if ( !mysql_num_rows($result) ) {
+		$wpdb->insert( $wpdb->camera, array('name'=>$name,'value'=>$value) );
+	}
 }
 
 function camera_get_option($name) {
