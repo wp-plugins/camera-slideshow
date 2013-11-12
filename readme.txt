@@ -10,6 +10,8 @@ A jQuery slideshow with a responsive layout, easy to use with an extended admin 
 
 == Description ==
 
+If you're looking for an advanced Wordpress slideshow: [**Shortcodelic plugin bundle**](http://codecanyon.net/item/shortcodelic-wordpress-plugin-bundle/6076939?ref=pixedelic "Shortcodelic plugin bundle").
+
 A jQuery slideshow with an adaptive/responsive layout, easy to use with an extended admin panel. It already provides ColorBox, TimThumb, many effects. You can include it into your theme by using the shortcode (through a useful TinyMCE custom button) or through a meta-box by adding some lines of code to your theme.
 
 Here is the demo page: [Camera slideshow](http://www.pixedelic.com/plugins/camera/wp.php "Camera slideshow")
