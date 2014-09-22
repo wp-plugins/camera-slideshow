@@ -3,7 +3,7 @@
 Plugin Name: Camera slideshow
 Plugin URI: http://www.pixedelic.com/plugins/camera/wp.php
 Description: An adpative jQuery slideshow, mobile ready
-Version: 1.4.0.0
+Version: 1.4.0.1
 Author: Manuel Masia | Pixedelic.com
 Author URI: http://www.pixedelic.com
 License: GPL2
@@ -35,16 +35,18 @@ function _camera_Install() {
 	global $wpdb;
 	
 	$table_name = $wpdb->prefix . "camera";
+	$table_hack = $wpdb->prefix . "camera_hack";
 	
 	$charset_collate = '';
-	if ( version_compare(mysql_get_server_info(), '4.1.0', '>=') ) {
+	$ver = mysqli_get_server_info( $wpdb->dbh );
+	if ( version_compare($ver, '4.1.0', '>=') ) {
 		if ( ! empty($wpdb->charset) )
 			$charset_collate = "DEFAULT CHARACTER SET $wpdb->charset";
 		if ( ! empty($wpdb->collate) )
 			$charset_collate .= " COLLATE $wpdb->collate";
 	}
 	
-	if( !$wpdb->get_var( "SHOW TABLES LIKE '$table_name'" ) ) {
+	if( !$wpdb->get_var( $wpdb->prepare( "SHOW TABLES LIKE %s", $table_name ) ) ) {
 	  
 		$sql = "CREATE TABLE ".$table_name." (
 		name VARCHAR(255) NOT NULL,
@@ -54,7 +56,7 @@ function _camera_Install() {
 	   require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
 	   dbDelta($sql);
 	} else {
-		if( !$wpdb->get_var( "SHOW TABLES LIKE ".$table_name."_hack" ) ) {
+		if( !$wpdb->get_var( $wpdb->prepare( "SHOW TABLES LIKE %s", $table_hack ) ) ) {
 			$wpdb->query("CREATE TABLE ".$table_name."_hack as
 				SELECT * FROM $table_name WHERE 1 GROUP BY name;");
 		}

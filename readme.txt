@@ -45,6 +45,9 @@ if (function_exists('camera_meta_slideshow')) {
 
 == Changelog ==
 
+= 1.4.0.1 =
+* 2014.09.22 - Fixed mysql issues, always hoping to release Camera 2.0 soon
+
 = 1.4.0.0 =
 * 2014.09.22 - Fixed many issues, hoping to release Camera 2.0 soon
 
