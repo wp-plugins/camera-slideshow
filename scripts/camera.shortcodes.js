@@ -13,32 +13,31 @@ jQuery(function(){
 	});	
 
 	tinymce.create('tinymce.plugins.AddCameraSc', {
-		createControl : function(id, controlManager) {
-			if (id == 'camera_slideshow_sc') {
-				var button = controlManager.createButton('camera_slideshow_sc', {
-					title : 'Camera shortcode', 
-					image : plugindir+'/css/images/shortcode_button.png',
-					onclick : function() {
-						var t = jQuery("#camera_all_meta");
-						t.dialog({
-							height: 250,
-							width: 500,
-							modal: true,
-							dialogClass: 'wp-dialog',
-							title: 'Camera shortcode generator',
-							zIndex: 50
-						});
-						jQuery('.button',t).one('click',function(){
-							t.dialog('close');
-							var sC = jQuery('input[type="hidden"]',t).val();
-							tinyMCE.activeEditor.execCommand('mceInsertContent', 0, sC);
-						});
-					}
-				});
-				return button;
-			}
-			return null;
+		init : function(ed, url) {
+
+			ed.addButton('camera_slideshow_sc', {
+				title : 'Camera shortcode',
+				image : plugindir+'/css/images/shortcode_button.png',
+				onclick : function() {
+					var t = jQuery("#camera_all_meta");
+					t.dialog({
+						height: 250,
+						width: 500,
+						modal: true,
+						dialogClass: 'wp-dialog',
+						title: 'Camera shortcode generator',
+						zIndex: 50
+					});
+					jQuery('.button',t).one('click',function(){
+						t.dialog('close');
+						var sC = jQuery('input[type="hidden"]',t).val();
+						tinyMCE.activeEditor.execCommand('mceInsertContent', 0, sC);
+					});
+				}
+			});
+
 		}
+
 	});
 	
     tinymce.PluginManager.add('camera_slideshow_sc', tinymce.plugins.AddCameraSc);

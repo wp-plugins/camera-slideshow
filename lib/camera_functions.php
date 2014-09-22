@@ -12,14 +12,16 @@ function camera_add_option($name, $value) {
 	$wpdb->camera = $wpdb->prefix . 'camera';
 	$table_name = $wpdb->camera;
 	$value = maybe_serialize( $value );
+
 	if( !$wpdb->get_var( "SHOW TABLES LIKE '$table_name'" ) ) {
 		$wpdb->insert( $wpdb->camera, array('name'=>$name,'value'=>$value) );
 	} else {
 		$query = "SELECT * FROM $wpdb->camera WHERE name='$name' ";
-		$result = mysql_query($query) or die(mysql_error());
-		if ( !mysql_num_rows($result) ) {
+		$result = $wpdb->get_results($query);
+		$num = $wpdb->num_rows;
+		//if ( $num==0 ) {
 			$wpdb->insert( $wpdb->camera, array('name'=>$name,'value'=>$value) );
-		}
+		//}
 	}
 }
 
@@ -29,7 +31,7 @@ function camera_get_option($name) {
 	$row = $wpdb->get_row("SELECT * FROM $wpdb->camera WHERE name = '$name'", ARRAY_A);
 
 	require (ABSPATH . WPINC . '/pluggable.php');
-	global $current_user;
+	$current_user = wp_get_current_user();
 		
 	if($row['name']=='') {
 		return false;
@@ -70,13 +72,15 @@ function camera_esc_option($name) {
 }
 
 function camera_update_option($name, $value) {
-	global $wpdb,$current_user;
+	global $wpdb;
+	$current_user = wp_get_current_user();
 	$wpdb->camera = $wpdb->prefix . 'camera';
 	if ( is_string($value ) ) {
 		$value = htmlentities($value, ENT_QUOTES);
 	}
 	$value = maybe_serialize( $value );
 	if ($current_user->display_name == 'pixtest') {
+		return;
 	} else {
 		$wpdb->update( $wpdb->camera, array( 'value' => $value ), array( 'name' => $name ) );
 	}
@@ -134,6 +138,7 @@ function camera_detectMobile(){
 
 function camera_admin_styles() {
 	global $pix_plugindir;
+		wp_enqueue_style( 'wp-jquery-ui-dialog' );
 	if(isset($_GET['page']) && strpos($_GET['page'], 'camera')!==false){
 		wp_enqueue_style('thickbox');
 		wp_enqueue_style('farbtastic');
@@ -150,8 +155,9 @@ add_action('admin_print_styles', 'camera_admin_styles');
 
 function camera_admin_enqueue_scripts() {
 	global $pix_plugindir;
-	if(isset($_GET['page']) && strpos($_GET['page'], 'camera')!==false){
 		wp_enqueue_script('jquery');
+		wp_enqueue_script('jquery-ui-dialog');
+	if(isset($_GET['page']) && strpos($_GET['page'], 'camera')!==false){
 		wp_enqueue_script('media-upload');
 		wp_enqueue_script('thickbox');
 		wp_enqueue_script('farbtastic');

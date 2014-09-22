@@ -32,28 +32,32 @@ function camera_addremove(){
 			<?php 
             $camera_added_slideshows = camera_get_option( 'camera_added_slideshows' );
 			$i = 0;
-            foreach($camera_added_slideshows as $option => $value) {
-				if($i%2 == 0) {
-					$eve = ' even';
-				} else {
-					$eve = '';
-				}
-				if(count($camera_added_slideshows)>1) {
-					$delete = '<a href="#" class="camera_delete_icon camera_qtip" data-tip="Delete this slideshow">&nbsp;</a>';
-				} else {
-					$delete = '<a href="#" class="camera_delete_fake">&nbsp;</a>';
-				}
-				echo '<div class="camera_row'.$eve.'"><span class="counter">'.($i+1).'.</span>';
-					echo '<span class="camera_slideshow_buttons"><a href="'.get_admin_url().'admin.php?page=camera_manage" class="camera_edit_icon camera_qtip" data-tip="Edit this slideshow">&nbsp;</a>'.$delete;
-				if(count($camera_added_slideshows)==1) {
-					echo '<div class="icon_cover"></div>';
-				}
-				echo '</span>';
-                echo '<input type="hidden" name="camera_added_slideshows['.$i.']" value="'.$value.'">';
-                echo '<input type="text" value="'.$value.'" disabled>';
-				echo '</div><!-- .camera_row -->';
-				$i++;
-            }
+			if ( !empty($camera_added_slideshows) && is_array($camera_added_slideshows)) {
+	            foreach($camera_added_slideshows as $option => $value) {
+					if($i%2 == 0) {
+						$eve = ' even';
+					} else {
+						$eve = '';
+					}
+					if(count($camera_added_slideshows)>1) {
+						$delete = '<a href="#" class="camera_delete_icon camera_qtip" data-tip="Delete this slideshow">&nbsp;</a>';
+					} else {
+						$delete = '<a href="#" class="camera_delete_fake">&nbsp;</a>';
+					}
+					echo '<div class="camera_row'.$eve.'"><span class="counter">'.($i+1).'.</span>';
+						echo '<span class="camera_slideshow_buttons"><a href="'.get_admin_url().'admin.php?page=camera_manage" class="camera_edit_icon camera_qtip" data-tip="Edit this slideshow">&nbsp;</a>'.$delete;
+					if(count($camera_added_slideshows)==1) {
+						echo '<div class="icon_cover"></div>';
+					}
+					echo '</span>';
+	                echo '<input type="hidden" name="camera_added_slideshows['.$i.']" value="'.$value.'">';
+	                echo '<input type="text" value="'.$value.'" disabled>';
+					echo '</div><!-- .camera_row -->';
+					$i++;
+	            }
+	        } else {
+	        	echo 'No slideshow available';
+	        }
             ?>
             <input type="hidden" name="action" value="save">
         </form>

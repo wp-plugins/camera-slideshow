@@ -3,7 +3,7 @@ Contributors: manuelmasia
 Donate link: http://www.pixedelic.com/plugins/camera
 Tags: slideshow, jQuery, adaptive, responsive, lazy loading, mobile, drag and drop, admin panel, shortcode
 Requires at least: 3.0.0
-Tested up to: 3.4.1
+Tested up to: 4.0.0
 Stable tag: trunk
 
 A jQuery slideshow with a responsive layout, easy to use with an extended admin panel
@@ -44,6 +44,9 @@ if (function_exists('camera_meta_slideshow')) {
 2. Camera admin panel (2)
 
 == Changelog ==
+
+= 1.4.0.0 =
+* 2014.09.22 - Fixed many issues, hoping to release Camera 2.0 soon
 
 = 1.3.4.3 =
 * 2012.07.18 - Fixed another issue with the database table
